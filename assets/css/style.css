@@ -1,0 +1,83 @@
+
+
+/*--FONTS--*/
+
+.headline-text {font-family: 'Montserrat', sans-serif;
+    font-size: 42x;
+    color: white;
+   
+
+}
+
+.summary-text {
+
+font-family: 'Merriweather', serif;
+font-size: 16px;
+color: white;
+}
+
+
+
+
+
+/*--NAVBAR--*/
+
+
+
+.navbar {
+    margin-bottom: 0;
+    border: 0;
+    width: 100%;
+ 
+}
+
+.navbar .navbar-nav .nav-link {
+    color:black;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.navbar .navbar-toggler {
+    border: 0;
+}
+
+
+
+
+/*--TOP SECTION--*/
+
+.jumbotron {
+    background-color: #55c288;
+}
+
+.section-top {
+
+    text-align: left;
+}
+
+.feature-content { color: white;
+
+    
+}
+
+.jumbotron-headline {
+
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+
+
+
+
+.large-cards {
+
+    padding-top:200px;
+}
+
+
+@media screen and (max-width: 600px) {
+    .jumbotron-headline {
+      font-size: 32px;
+    }
+  }
