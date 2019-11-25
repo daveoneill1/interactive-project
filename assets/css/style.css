@@ -44,10 +44,12 @@ color: white;
 
 
 
-/*--TOP SECTION--*/
+/*--Jumbotron--*/
 
 .jumbotron {
     background-color: #55c288;
+    border-radius: 0px;
+    border: none;
 }
 
 .section-top {
@@ -68,11 +70,33 @@ color: white;
 
 
 
+/*--Cards 3 Column--*/
 
+
+.card-img-top{
+
+    max-height: 170px;
+}
+
+.card-deck {
+
+    padding-top:50px;
+padding-bottom: 50px;
+margin-left: 20px;
+margin-right: 20px;
+
+
+
+}
+
+
+
+/*--Cards 2 Column--*/
 
 .large-cards {
 
-    padding-top:200px;
+    padding-top:50px;
+padding-bottom: 50px;
 }
 
 
@@ -81,3 +105,40 @@ color: white;
       font-size: 32px;
     }
   }
+
+
+
+  /*--FOOTER--*/
+
+.page-footer {
+    background-color:#101820;}
+
+    .footer-title {
+
+        color: white;
+        font-size: 26px;
+        font-weight: bold;
+        letter-spacing: 6px;
+        margin-top: 50px;
+        margin-bottom: 100px;
+        margin-left: 15px;
+        margin-right: 15px;
+        text-align: left;
+
+    }
+
+    .footer-heading {
+        color: #d2c295;
+        font-size: .75rem;
+        font-weight: bold;
+        margin-top: 80px;
+
+
+    }
+
+    .useful-list a, 
+    .social-list a {
+        color: white;
+        font-size: 12px;
+        letter-spacing: 2px;
+    }
