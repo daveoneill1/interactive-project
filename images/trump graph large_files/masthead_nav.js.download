@@ -1,0 +1,122 @@
+document.write('<ul>' +
+    '<li class="site-nav-more"><a href="/epolls/latest_polls/" class="more-menu jQ-section-menu">Polls</a>'+
+'<span class="sections-menu"><img src="/asset/img/grey-chev-sm.png"></span>'+
+'<span class="sections-tab"></span>'+
+'<ul class="primary">'+
+'<li><a class="static" href="/epolls/latest_polls/">Latest Polls</a></li>'+
+'<li><a class="static" href="/epolls/other/president_trump_job_approval-6179.html">Trump Job Approval</a></li>'+
+'<li><a class="static" href="/epolls/latest_polls/democratic_nomination_polls">Democratic Primary Polls</a></li>'+
+'<li><a class="static" href="/epolls/latest_polls/republican_nomination_polls">Republican Primary Polls</a></li>'+
+'<li><a class="static" href="/epolls/latest_polls/general_election">General Election Polls</a></li>'+
+'<li><a class="static" href="/epolls/other/direction_of_country-902.html">Direction of Country</a></li>'+
+'<li><a class="static" href="/epolls/other/other/FavorabilityRatingsPoliticalLeaders.html">Political Leaders Favorability</a></li>'+
+'<li><a class="static" href="/epolls/other/public_approval_of_the_impeachment_inquiry_of_president_trump-6956.html">Trump Impeachment Inquiry</a></li>'+
+'<li><a class="static" href="/epolls/latest_polls/state_of_the_union/">State of the Union Polls</a></li>'+
+'<li><a class="static" href="/epolls/latest_polls/elections/">All Latest Election Polls</a></li>'+
+'</ul>'+
+'</li>'+
+'<li class="site-nav-more"><a href="/elections/2020/" class="more-menu jQ-section-menu">Election 2020</a>'+
+'<span class="sections-menu"><img src="/asset/img/grey-chev-sm.png"></span>'+
+'<span class="sections-tab"></span>'+
+'<ul class="primary">'+
+'<li><a class="static" href="/epolls/2020/president/us/2020_democratic_presidential_nomination-6730.html">Democratic Nomination</a></li>'+
+'<li><a class="static" href="/epolls/latest_polls/general_election">General Election Polls</a></li>'+
+'<li><a class="static" href="/elections/election_dates/2020/">Election Calendar</a></li>'+
+'<li><a class="static" href="/elections/betting_odds/democratic_2020_nomination/">Democratic Betting Odds</a></li>'+
+'<li><a class="static" href="/epolls/other/2020_generic_congressional_vote-6722.html">Generic Congressional Ballot</a></li>'+
+'<li><a class="static" href="/epolls/latest_polls/presidential_primary_polls">Presidential Primary Polls</a></li>'+
+'<li><a class="static" href="/epolls/latest_polls/senate">Senate Polls</a></li>'+
+'<li><a class="static" href="/epolls/latest_polls/governor">Governor Polls</a></li>'+
+'<li><a class="static" href="/epolls/latest_polls/elections/">Latest Election 2020 Polls</a></li>'+
+'</ul>'+
+'</li>'+
+'<li class="" ><a href="/video">Video</a></li>'+
+'<li class="site-nav-more"><a href="javascript:void(0);" class="more-menu jQ-section-menu">Writers</a>'+
+'<span class="sections-menu"><img src="/asset/img/grey-chev-sm.png"></span>'+
+'<span class="sections-tab"></span>'+
+'<ul class="primary">'+
+'<script type="text/javascript" src="/include/staff-menu.js" /></script>'+
+'</ul>'+
+'</li>'+
+'<li class="site-nav-more">'+
+'<a class="more-menu jQ-section-menu more" href="javascript:void(0);">More</a>'+
+'<img class="jQ-section-menu" src="/asset/img/mobile-menu.png" />'+
+'<span class="sections-menu"><img src="/asset/img/grey-chev-sm.png"></span>'+
+'<span class="sections-tab"></span>'+
+'<ul class="primary">'+
+    '<li><a class="static welcome-login" href="/dashboard">Login</a></li>'+
+'<li>'+
+'<a href="javascript:void(\'0\')">Polls</a>'+
+'<ul class="inner">'+
+'<li><a class="static" href="/epolls/latest_polls/">Latest Polls</a></li>'+
+'<li><a class="static" href="/epolls/other/president_trump_job_approval-6179.html">Trump Job Approval</a></li>'+
+'<li><a class="static" href="/epolls/latest_polls/democratic_nomination_polls">Democratic Primary Polls</a></li>'+
+'<li><a class="static" href="/epolls/latest_polls/republican_nomination_polls">Republican Primary Polls</a></li>'+
+'<li><a class="static" href="/epolls/latest_polls/general_election">General Election Polls</a></li>'+
+'<li><a class="static" href="/epolls/other/direction_of_country-902.html">Direction of Country</a></li>'+
+'<li><a class="static" href="/epolls/other/other/FavorabilityRatingsPoliticalLeaders.html">Political Leaders Favorability</a></li>'+
+'<li><a class="static" href="/epolls/other/public_approval_of_the_impeachment_inquiry_of_president_trump-6956.html">Trump Impeachment Inquiry</a></li>'+
+'<li><a class="static" href="/epolls/latest_polls/state_of_the_union/">State of the Union Polls</a></li>'+
+'<li><a class="static" href="/epolls/latest_polls/elections/">All Latest Election Polls</a></li>'+
+'</ul>'+
+'</li>'+
+'<li><a href="javascript:void(0)">RCP Election 2020</a>'+
+'<ul class="inner">'+ 
+'<li><a class="static" href="/elections/2020/">Election 2020</a></li>'+
+'<li><a class="static" href="/epolls/2020/president/us/2020_democratic_presidential_nomination-6730.html">Democratic Nomination</a></li>'+
+'<li><a class="static" href="/epolls/latest_polls/general_election">General Election Polls</a></li>'+
+'<li><a class="static" href="/elections/election_dates/2020/">Election Calendar</a></li>'+
+'<li><a class="static" href="/elections/betting_odds/democratic_2020_nomination/">Democratic Betting Odds</a></li>'+
+'<li><a class="static" href="/epolls/other/2020_generic_congressional_vote-6722.html">Generic Congressional Ballot</a></li>'+
+'<li><a class="static" href="/epolls/latest_polls/presidential_primary_polls">Presidential Primary Polls</a></li>'+
+'<li><a class="static" href="/epolls/latest_polls/senate">Senate Polls</a></li>'+
+'<li><a class="static" href="/epolls/latest_polls/governor">Governor Polls</a></li>'+
+'<li><a class="static" href="/epolls/latest_polls/elections/">Latest Election 2020 Polls</a></li>'+
+'</ul>'+
+'</li>'+
+'<li><a class="static" href="/video">Video</a></li>'+
+'<li><a href="javascript:void(\'0\')">Writers</a>'+
+'<ul class="inner">'+
+'<ul class="inner">'+
+'<li><div class="subheader" style="border-top:none;">Staff Writers</div></li>'+
+'<li><a class="static" href="/authors/tom_bevan/">Tom Bevan</a></li>'+
+'<li><a class="static" href="/authors/carl_m_cannon">Carl M. Cannon</a></li>'+
+'<li><a class="static" href="/authors/sean_trende">Sean Trende</a></li>'+
+'<li><a class="static" href="/authors/alexis_simendinger">Alexis Simendinger</a></li>'+
+'<li><a class="static" href="/authors/caitlin_huey-burns">Caitlin Huey-Burns</a></li>'+
+'<li><a class="static" href="/authors/rebecca_berg/">Rebecca Berg</a></li>'+
+'<li><a class="static" href="/authors/james_arkin/">James Arkin</a></li>'+
+'<li><a class="static" href="/authors/david_byler/">David Byler</a></li>'+
+'<li><a class="static" href="/authors/ab_stoddard/">A.B. Stoddard</a></li>'+
+'<li><div class="subheader">Contributors</div></li>'+
+'<li><a class="static" href="/authors/heather_wilhelm/">Heather Wilhelm</a></li>'+
+'<li><a class="static" href="/authors/mark_salter/">Mark Salter</a></li>'+
+'<li><a class="static" href="/authors/bill_scher/">Bill Scher</a></li>'+
+'<li><a class="static" href="/authors/cathy_young/">Cathy Young</a></li>'+
+'<li><a class="static" href="/authors/lou_cannon/">Lou Cannon</a></li>'+
+'<li><a class="static" href="/authors/charles_lipson/">Charles Lipson</a></li>'+
+'<li><a class="static" href="/authors/joel_kotkin/">Joel Kotkin</a></li>'+
+'</ul>'+
+'</ul>'+
+'</li>'+
+'<li><a class="static" href="/articles/">Articles</a></li>'+
+'<li><a class="static" href="/real_clear_opinion_research/k-12_education_falls_short_and_hope_for_gains_lags.html">Research</a></li>'+
+'<li><a class="static" href="/daily_newsletters/">Newsletters</a></li>'+
+'<li><a href="javascript:void(0)">Multimedia</a>'+
+'<ul class="inner">'+ 
+'<li><a class="static" href="/video/changing_lanes/">Changing Lanes</a></li>'+
+'<li><a class="static" href="/video/original/">Original Video</a></li>'+
+'<li><a class="static" href="/multimedia/podcast.html">Podcasts</a></li>'+
+'</ul>'+
+'</li>'+
+'<li><a class="static" href="/cartoons/cartoons_of_the_week/">Cartoons</a></li>'+
+'<li><a class="static" href="/timeline/president_donald_trump.html">Trump Timeline</a></li>'+
+'<li><a class="static" href="/links/">Links</a></li>'+
+'<li><a class="static" href="/events/">Events</a></li>'+
+'<li><a class="static" href="/speakers.html">Speakers</a></li>'+
+'<li><a class="static" href="/contact.html">Contact</a></li>'+
+'<li><a class="static" href="/about.html">About</a></li>'+
+'<li><a class="static" href="/media_kit">Media Kit</a></li>'+
+'</ul>'+
+'</li>'+
+'</ul>');

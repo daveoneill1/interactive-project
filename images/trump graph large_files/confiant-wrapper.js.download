@@ -1,0 +1,151 @@
+// Wrapper for GotChosen, generated on 2019-10-30T16:20:45-04:00, version 2018.04.02
+pbjs.que.push(function() {
+
+  // keep a reference to original renderAd function
+  var w = window;
+  w._clrm = w._clrm || {};
+  w._clrm.renderAd = w._clrm.renderAd || pbjs.renderAd;
+  var config = w._clrm.prebid || {
+    /* Enables sandboxing on a device group
+         All:1 , Desktop:2, Mobile: 3, iOS: 4, Android: 5, Off: 0
+     */
+    sandbox: 1
+  };
+
+  if (w.confiant && w.confiant.settings) {
+    config = w.confiant.settings;
+  }
+
+  var confiantWrap = function confiantWrap(a,b,c,d,e,f,g){function h(a){if("string"!=typeof a)return a;var b=a.match(/[^\u0000-\u024F\u1E00-\u1EFF\u2C60-\u2C7F\uA720-\uA7FF]/g);if(!b)return a;for(var c=0;c<b.length;c++)a=a.replace(b[c],encodeURIComponent(b[c]));return a}function i(a){return a=h(a),(p(a)||"")[v]("/","_")[v]("+","-")}function j(b,c,e,g){var h=z+q(b)+"&d="+c,i="err__"+1*new Date;n[i]=g;var j="<"+t+' type="text/java'+t+'">window["'+d+'"]={};'+'window["'+d+'"]["tpid"]="'+b+'";'+'window["'+d+'"]["'+b+'"]='+o.stringify(e)+";"+"</"+t+">",k="<"+t+" on"+w+'="void('+i+'())" '+u+'="'+h+'" type="text/java'+t+'" ></'+t+">";f&&(k="<"+t+" on"+w+'="void('+i+'())" '+'" type="text/java'+t+'" >'+unescape(f)+"</"+t+">"),a[y](j+k)}var k=b.bidder,l=null,m=b.size,n=a.parentWindow||a.defaultView,o=n.JSON,p=n.btoa,q=n.encodeURIComponent;if(!o||!p)return!1;var r="t",s="i",t="script",u="src",v="replace",w="error",x="stringify",y="wr"+s+r+"e";c.indexOf("http")<0&&(c="https://"+c);var z=c+"/?wrapper="+q(d)+"&tpid=",A={k:{hb_bidder:[k],hb_size:[m]}},B=!1;return window._clrm||window.confiant||function(){function a(a){var b="cb";if("string"==typeof a.data&&a.data.indexOf(b)>-1){var c=a.data.substr(b.length+d.length),f=atob(c),g=window.JSON.parse(f);e.apply(this,g)}}if(window.addEventListener)try{window.top.addEventListener("message",a,!1)}catch(b){window.addEventListener("message",a,!1)}else window.top.attachEvent("onmessage",a)}(),function(){try{l=i(d+"/"+A.k.hb_bidder[0]+":"+A.k.hb_size[0]);var c={wh:l,wd:o.parse(o[x](A)),wr:0};2===g&&(c.cb=1e3*Math.random());var f={prebid:{adId:b.adId,cpm:b.cpm}},h=!1;try{h=!!n.frameElement.getAttribute("data-forced-sandbox")}catch(a){}var k={d:c,t:escape(b.ad),isE:!0,cb:e,id:f,isFSb:h,devMode:g};j(l,i(o[x](c)),k,function(){a[y](b.ad)})}catch(a){B=!0;var c={property_id:d,uh:l||"wt_not_established",url:window.location.href||window.top.location.href||document.url||"url not found",label:"confiantWrap_initialize",msg:a.message},m=new XMLHttpRequest;m.open("POST","https://protected-by.clarium.io/werror",!0),m.send(p(o.stringify(c)))}}(),a.close(),!B};
+  //add optional blocking layer
+
+  var isGoogleFrame = function (c) {
+    return c.tagName === 'IFRAME' && c.id && c.id.indexOf('google_ads_iframe_') > -1;
+  }
+
+  var shouldSandbox = function () {
+    var uaToRegexMap = {
+        "mobile": /Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile/i,
+        "ios": /(.+)(iPhone|iPad|iPod)(.+)OS[\s|\_](\d)\_?(\d)?[\_]?(\d)?.+/i,
+        "android": /Android/i
+      },
+      sbStr = "" +config.sandbox;
+    if (sbStr === "1") {
+      // all environments
+      return true;
+    } else if (sbStr === "2") {
+      // desktop
+      return !navigator.userAgent.match(uaToRegexMap["mobile"]);
+    } else if (sbStr === "3") {
+      // mobile
+      return navigator.userAgent.match(uaToRegexMap["mobile"]);
+    } else if (sbStr === "4") {
+      // ios only
+      return navigator.userAgent.match(uaToRegexMap["ios"]);
+    } else if (sbStr === "5") {
+      // android
+      return navigator.userAgent.match(uaToRegexMap["android"]);
+    } else {
+      return false;
+    }
+  }
+
+  function appendChildOverwrite() {
+    if (shouldSandbox()) {
+      Node.prototype.appendChild = (function(original) {
+        return function(child) {
+          if (isGoogleFrame(child) && shouldSandbox() && !child.getAttribute('sandbox')) {
+            child.setAttribute('sandbox',
+              'allow-forms allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation');
+            child.setAttribute('data-forced-sandbox', true);
+          }
+          return original.call(this, child);
+        };
+      })(Node.prototype.appendChild);
+    }
+    return;
+  }
+
+
+  appendChildOverwrite();
+
+
+  // override renderAd
+  pbjs.renderAd = function(doc, id) {
+    if (doc && id) {
+      try {
+
+        // get pbjs bids
+        var bids = [],
+          bidResponses = pbjs.getBidResponses(),
+          highestBids = pbjs.getHighestCpmBids();
+        for (var slot in bidResponses) {
+          bids = bids.concat(bidResponses[slot].bids);
+        }
+        bids = bids.concat(highestBids);
+
+        // lookup ad by ad Id (avoid ES6 array functions)
+        var bid, i;
+        for (i=0; i<bids.length; i++) {
+          if (bids[i].adId === id) {
+            bid = bids[i];
+            break;
+          }
+        }
+
+        // Optional: list of bidders that don't need wrapping, array of strings, e.g.: ["bidder1", "bidder2"]
+        var confiantExcludeBidders = config.excludeBidders || [];
+
+        // check bidder exclusion (avoid ES6 array functions)
+        if (bid) {
+          var excludeBidder = false;
+          for (i=0; i<confiantExcludeBidders.length; i++) {
+            if (bid.bidder === confiantExcludeBidders[i]) {
+              excludeBidder = true;
+              break;
+            }
+          }
+        }
+
+
+        if (bid && bid.ad && !excludeBidder) {
+          // Neutralize document
+          var docwrite = doc.write;
+          var docclose = doc.close;
+          doc.write = doc.close = function() {};
+          // call renderAd with our neutralized doc.write
+          window._clrm.renderAd(doc, id);
+          // Restore document
+          delete doc.write;
+          delete doc.close;
+
+          var callback = function(blockingType, blockingId, isBlocked, wrapperId, tagId, impressionData) {
+            console.log("w00t one more bad ad nixed.", arguments);
+          };
+
+          var serializedCasprLayer = (function () {
+            if (typeof getSerializedCaspr === 'undefined') {
+              //for now both builds are supported v2(additional network call) and v3 (unified)
+              return null;
+            }
+            return getSerializedCaspr();
+          })();
+
+          // do the actual ad serving and fall back on document.write if failure
+          if (!confiantWrap(doc, bid, 'clarium.global.ssl.fastly.net', '5m_ZwDX8BCsLGt6Hwl8Vp8Qdwps', callback, serializedCasprLayer, config.devMode)) {
+            doc.write(bid.ad);
+            doc.close();
+          }
+
+          return;
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    // if bid.ad is not defined or if any error occurs, call renderAd to serve the creative
+    window._clrm.renderAd(doc, id);
+  };
+
+});

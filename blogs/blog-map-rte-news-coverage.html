@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Data analysis blog</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,700,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:300,400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+
+</head>
+
+<body>
+
+
+    <!--NAVIGATION BAR-->
+
+    <div class="container-fluid">
+        <nav class="navbar navbar-light navbar-expand-lg">
+            <a href="/" class="navbar-brand">News Analysis</a>
+
+            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+
+                <!--NAVIGATION LINKS-->
+                <ul class="navbar-nav ml-auto">
+                    <!--<li class="active nav-item"><a href="index.html" class="nav-link">Blog</a>
+                    </li>-->
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Get a demo</a>
+                    </li>
+
+
+                </ul>
+            </div>
+
+
+        </nav>
+
+
+    </div>
+
+    <!--Map Container-->
+
+    <div class="container-fluid header-holder">
+
+     <!--   <h3 class="graph-title">RTE News Coverage</h3>
+
+        <hr> -->
+
+        <div id="map"></div>
+
+        <div class=gm-style-iw-d></div>
+
+
+    </div>
+
+
+    <!--Social Icons-->
+
+    <section id="post-content">
+
+        <div class="container post-position">
+
+            <div class="row">
+
+                <div class=" blog-col col-md-10.offset-md-1">
+
+
+
+                    <div class="social text-center">
+                        <ul id="menu">
+                            <li><a class="fa fa-twitter" title="" target="_blank" href="#"></a></li>
+                            <li><a class="fa fa-facebook" title="" target="_blank" href="#"></a></li>
+                            <li><a class="fa fa-envelope" title="" target="_blank" href="#"></a></li>
+
+                        </ul>
+
+
+                    </div>
+                    <div class="article-title">
+
+                        <h2>RTE Online News Coverage By Location</h2>
+
+                    </div>
+
+
+                    <div class="blog-meta">
+                        <div class="date">
+                            November 28th 2019
+                        </div>
+                    </div>
+
+
+                    <p>Click on the locations above to highlight the number of times that location has been mentioned.
+                        This
+                        dataset is extracted using the GDELT GEO 2.0 API. The results are stored locally in geojson
+                        format and applied
+                        to the Google Map. A few lines of SQL using Google Big Query will deliver results 'live' /
+                        updated every 15 minutes or for a
+                        specified period of time.
+                    </p>
+
+                    <h2 class="blogpost-title">Domain Reference</h2>
+
+                    <p>This query can be applied to any online news domain. In fact GDELT can be queried using keyworks,
+                        themes and much more.
+                        Over the next week will be create coverage maps for a number of online news domains for the same
+                        time frame to generate further
+                        insights into global news coverage.
+                    </p>
+
+
+                    <p>GDELT outlined more about the GEO 2.0 API in an article in 2017 "Perhaps most importantly, the
+                        new API now allows you to create maps of any arbitrary keyword or phrase, rather than being
+                        limited to just the GKG topical themes of the previous GeoJSON API. Now you can enter any
+                        English keyword and instantly receive back a map of every location mentioned within a sentence
+                        or two of your keyword across everything GDELT has monitored in all 65 live machine translated
+                        languages over the last 7 days, updated every 15 minutes.
+                        Now no matter what word or phrase you're interested in, you can map it and even combine multiple
+                        terms into basic boolean OR statements".</p>
+
+                    <h2 class="blogpost-title">Massive Complexity</h2>
+
+                    <p>Given the immense complexity of monitoring worldwide news media in nearly every country of the
+                        world across more than 100 languages, visually identifying and extracting the actual article
+                        text from the rest of the page, machine translating the incredible complexity and nuance of more
+                        than 65 languages in realtime and geocoding and disambiguating more than 9 million places on
+                        earth down to the level of a remote isolated hilltop, together with deep learning analysis of
+                        imagery reflecting the entirety of global human experience, you will almost always see at least
+                        some level of error in the results this API provides. This can range from one city being
+                        confused for another of the same name and context to a city name being mistranslated to an
+                        unrelated temporary breaking news inset at a different location being incorrectly inserted into
+                        the middle of an article. With anything this massive, you will always find some level of error
+                        when you dive deeply enough into the results,
+                        but overall the maps should accurately reflect the broad contours of the geography of your
+                        search.</p>
+                </div>
+
+
+
+            </div>
+
+
+
+        </div>
+
+    </section>
+
+    <!--Popular Posts-->
+
+    <section id="popular-posts" class="p-posts">
+
+
+        <div class="post-container container">
+
+            <header>
+
+                <h3 class="p-posts-title">
+
+                    <span class="s-title">Popular Posts</span>
+
+                </h3>
+
+            </header>
+
+            <div class="row">
+
+                <div class="card-deck">
+
+                    <div class="card">
+                        <img class="card-img-top" src="/images/yemen 2yr graph.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">The Media is Talking Less About Yemen</h5>
+                            <a href="/blog-media-talking-less-about-yemen.html" class="stretched-link"></a>
+                            <p class="card-text">Media coverage of Yemen has steadily decreased despite the fact that
+                                nearly 80% of
+                                the population need assistance according to the UN.
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img class="card-img-top" src="/images/yemen 2yr graph.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">The Media is Talking Less About Yemen</h5>
+                            <a href="/blog-media-talking-less-about-yemen.html" class="stretched-link"></a>
+                            <p class="card-text">Media coverage of Yemen has steadily decreased despite the fact that
+                                nearly 80% of
+                                the population need assistance according to the UN.
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img class="card-img-top" src="/images/yemen 2yr graph.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">The Media is Talking Less About Yemen</h5>
+                            <a href="/blog-media-talking-less-about-yemen.html" class="stretched-link"></a>
+                            <p class="card-text">Media coverage of Yemen has steadily decreased despite the fact that
+                                nearly 80% of
+                                the population need assistance according to the UN.
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img class="card-img-top" src="/images/yemen 2yr graph.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">The Media is Talking Less About Yemen</h5>
+                            <a href="/blog-media-talking-less-about-yemen.html" class="stretched-link"></a>
+                            <p class="card-text">Media coverage of Yemen has steadily decreased despite the fact that
+                                nearly 80% of
+                                the population need assistance according to the UN.
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+    </section>
+
+
+    <!--FOOTER SECTION-->
+
+    <footer class="page-footer">
+
+        <div class="container-fluid text-center  test-container">
+
+
+            <div class="row">
+
+                <div class="col-sm-3">
+
+                    <h5 class=" footer-title text-uppercase">News
+                        <br>Analysis</h5>
+
+                </div>
+
+
+
+                <div class="col-sm-3">
+
+                    <h5 class="footer-heading text-uppercase">Contact
+                    </h5>
+
+                </div>
+
+                <div class="col-sm-3">
+
+                    <h5 class="footer-heading text-uppercase">Learn
+                    </h5>
+
+                </div>
+
+                <div class="col-sm-3">
+
+                    <h5 class="footer-heading text-uppercase">Google Big Query
+                    </h5>
+
+                </div>
+
+
+            </div>
+
+            <!--FOOTER BOTTOM SECTION-->
+
+            <div class="row footer-section1">
+
+                <div class="col-12">
+
+                    <hr>
+
+                </div>
+
+            </div>
+
+            <div class="row footer-section2">
+                <div class="col-md-4 col-xs-12">
+
+                    <div class="social-footer">
+                        <ul id="social-menu-footer">
+                            <li><a class="fa fa-twitter" title="" target="_blank" href="#"></a></li>
+                            <li><a class="fa fa-facebook" title="" target="_blank" href="#"></a></li>
+                            <li><a class="fa fa-envelope" title="" target="_blank" href="#"></a></li>
+
+                        </ul>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        </div>
+
+
+
+
+        <!--Map Script-->
+
+
+
+        <script>
+
+            var map;
+            function initMap() {
+                map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 2,
+                    center: new google.maps.LatLng(46.619261, -33.134766),
+                    mapTypeId: 'terrain'
+                });
+
+                // Data url 
+
+                var script = document.createElement('script');
+
+                script.src ="/data/rte-news-coverage-world.js";
+                document.getElementsByTagName('head')[0].appendChild(script);
+            }
+
+            // Using eqfeed callback to take geojson data and loop through
+
+
+            window.eqfeed_callback = function (results) {
+                console.log(results)
+                for (var i = 0; i < results.features.length; i++) {
+                    let coords = results.features[i].geometry.coordinates;
+
+                    let latLng = new google.maps.LatLng(coords[1], coords[0]);
+
+                    // add label to marker with count and country pulled from json array
+                    let label = results.features[i].properties.count.toString() + " Location Mentions  " + results.features[i].properties.name
+
+                    //add marker, try and add a different style of marker
+                    let infowindow = new google.maps.InfoWindow({
+                        content: label
+                    });
+
+                    // marker details
+
+                    let marker = new google.maps.Marker({
+                        position: latLng,
+                        map: map,
+                        title: label,
+                        icon: "http://www.codeshare.co.uk/images/blue-pin.png",
+                        animation: google.maps.Animation.DROP
+                    });
+
+                    // open info window on click
+
+                    google.maps.event.addListener(marker, 'click', function () {
+                        infowindow.open(map, marker);
+                    });
+
+                    // click anywhere on the map to close the info window
+                    google.maps.event.addListener(map, 'click', function () {
+                        infowindow.close();
+                    });
+
+
+
+
+
+
+                }
+
+
+            }
+
+
+
+
+        </script>
+
+
+
+
+
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+
+        <script
+            src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+
+        <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOsD9LFUegL5XVBr0rNNOCW4cgJbZrbRU&callback=initMap"></script>
+
+
+
+
+
+
+</body>
+
+
+</html>

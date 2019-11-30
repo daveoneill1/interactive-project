@@ -1,0 +1,452 @@
+
+
+
+.headline-text {font-family:'Montserrat', sans-serif;
+    font-size: 42x;
+    color: black;
+    letter-spacing: .25em;
+    font-weight: 600;
+   
+}
+
+.article-title {font-family:'Montserrat', sans-serif ;
+    font-size: 32px;
+    line-height: 40px;
+    color: black;
+
+
+}
+
+
+
+
+
+
+/*--NAVBAR--*/
+
+
+
+.navbar {
+    margin-bottom: 0;
+    border: 0;
+    width: 100%;
+    background: transparent;
+ 
+}
+
+.navbar .navbar-nav .nav-link {
+    color:black;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.navbar .navbar-toggler {
+    border: 0;
+}
+
+
+
+
+/*--Jumbotron--*/
+
+
+
+.jumbotron {
+    background: transparent;
+    padding-top: 100px;
+    
+   
+}
+
+
+.title-header {
+    color:black;
+    font-size: 2.375rem;
+    font-weight: bold;
+    margin: 25px;
+    letter-spacing: 6px;
+}
+
+
+.summary-text {
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    
+
+}
+
+
+/*--Data Viz Section--*/
+
+.dataviz-container{
+
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border-top-color:#f1eeee;
+    border-top-style: solid;
+    border-top-width: .5px;
+    
+
+}
+
+.dataviz-heading {
+
+    padding-bottom: 50px;
+    
+}
+
+.dataviz-title {
+
+    font-family: 'Montserrat', serif;
+font-size: 32px;
+padding-bottom: 20px;
+}
+
+
+
+
+
+
+
+/*--Cards 3 Column--*/
+
+
+.card-img-top{
+
+    max-height: 170px;
+}
+
+.card-deck {
+
+    padding-top:50px;
+padding-bottom: 50px;
+margin-left: 20px;
+margin-right: 20px;
+
+
+
+}
+
+
+
+/*--Cards 2 Column--*/
+
+.large-cards {
+
+    padding-top:50px;
+padding-bottom: 50px;
+}
+
+
+.large-card-img-top {
+    max-height: 260px;
+}
+
+@media screen and (max-width: 600px) {
+    .jumbotron-headline {
+      font-size: 32px;
+    }
+  }
+
+    /*--Graph Style--*/
+
+.graph-title {
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 24px ;
+    padding-top: 30px;
+    
+
+}
+
+
+    /*--Map Style--*/
+
+    div#map {
+        min-height: 360px;
+    }
+
+    /*--Map Tooltip window Style--*/
+    
+
+    .gm-style-iw-d {
+
+             font-size: 16px;
+    }
+
+
+        /*--Legend Style--*/
+    #legend {
+        font-family: Arial, sans-serif;
+        background: #fff;
+        padding: 10px;
+        margin: 10px;
+        border: 3px solid #000;
+      }
+
+
+ /*--Blog Post Content--*/
+
+ #post-content p {
+  
+     font-size: 17px;
+     
+ }
+
+     
+ .post-position {
+
+    padding-top: 50px;
+    
+ }
+
+
+ .blog-col {
+
+    width: 100%;
+    padding-left: 15px;
+    padding-right:15px;
+    color:#1d2b36;
+    line-height: 1.6;}
+
+    .image-blog-post {padding-top: 20px;
+    padding-bottom:20px}
+
+    .section-top-blog {
+
+        background-color: #EEC059;
+    }
+
+    .section-top-blog-finegael {
+        background-color: #90CECE;
+
+    }
+    
+ /*--Blog Post Content--*/
+
+
+ .date{
+     font-size: 14px;
+     color: #444;
+     padding-bottom: 20px;
+ }
+
+    ul#menu li {
+        display:inline;
+        
+        
+      }
+
+   a.fa-twitter, a.fa-facebook, a.fa-linkedin {
+        background-color: #F1F3F5;
+        border-radius: 50%;
+        color: #B7C2CC;
+        height: 36px;
+        line-height: 36px;
+        margin: auto 10px;
+        width: 36px;
+        font-size: 20px;
+        text-align: center;
+    }
+
+
+    /*--Change Social Icons on hover--*/
+
+    a.fa-twitter:hover {  
+
+        background-color:#00B6F1;
+        -o-transition:.5s;
+        -ms-transition:.5s;
+        -moz-transition:.5s;
+        -webkit-transition:.5s;
+        transition:.5s;
+
+    }
+
+    a.fa-twitter {
+
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition:.5s;
+    }
+   
+
+
+    a.fa-facebook:hover {  
+
+        background-color:#3B5998;
+        -o-transition:.5s;
+        -ms-transition:.5s;
+        -moz-transition:.5s;
+        -webkit-transition:.5s;
+        transition:.5s;
+
+    }
+
+    a.fa-facebook {
+
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition:.5s;
+    }
+   
+    a.fa-linkedin:hover {  
+
+        background-color:#04669A;
+        -o-transition:.5s;
+        -ms-transition:.5s;
+        -moz-transition:.5s;
+        -webkit-transition:.5s;
+        transition:.5s;
+
+    }
+
+    a.fa-linkedin {
+
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition:.5s;
+    }
+
+
+
+
+
+
+
+
+    .social {
+        padding-bottom: 50px;}
+
+
+    .blogpost-title {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 22px;
+        color: #1d2b36;
+        line-height: 40px;
+        margin: 1.8em 0 .8em;
+        font-weight: 500;
+        margin-top: 20px;
+        margin-bottom:20px
+    }
+
+
+     /*--Popular Posts--*/
+
+     .post-container {
+    padding-top: 50px;
+
+     }
+
+     .p-posts-title {
+        letter-spacing: .5px;
+        text-transform: uppercase;
+        border-bottom: 1px solid #D5DCE1;
+        color: #A5B2BD;
+        font-size: 13px;
+        font-weight: 400;
+        margin: 0 auto 2.5em;
+        text-align: center;
+     }
+
+.s-title {
+    background: #fff;
+    padding: 0 10px;
+    position: relative;
+    top: 9px;
+}
+
+
+    
+ 
+  /*--FOOTER--*/
+
+.page-footer {
+    background-color:rgb(29, 43, 54);
+    height: auto;
+
+
+}
+
+    .footer-title {
+
+        color: white;
+        font-size: 22px;
+        font-weight: bold;
+        letter-spacing: 6px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        margin-left: 15px;
+        margin-right: 15px;
+        text-align: left;
+
+    }
+
+    .footer-heading {
+        color: white;
+        font-size: 16px;
+        font-weight: 500;
+        margin-top: 80px;
+        text-align: left;
+
+
+    }
+
+    ul#social-menu-footer li {
+        display:inline;
+       
+           
+      }
+
+      ul {
+
+        padding-inline-start: 0px;
+        margin-left: 15px;
+      }
+
+      .social-footer {
+          text-align: left;
+      }
+
+
+
+    hr {
+        border-bottom: .5px solid rgb(57, 81, 99);
+       
+    }
+
+    .footer-section2 {
+
+        padding-top:15px;
+        padding-bottom: 15px;
+    }
+
+
+    #particles-js {
+        width: 100%;
+        height: 800px;
+        background-color: white;
+        background-size: cover;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+       
+    }
+    
+    .callout-text {
+        color: black;
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        transform: translate(50%,-50%);
+        max-width: 900px;
+        padding: 2em 3em;
+
+    }

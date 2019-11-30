@@ -1,0 +1,45 @@
+
+<!-- saved from url=(0046)https://www.gotchosen.com/thirdparty/auth.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script>
+      function getCookie (cookieName) {
+        var result = null;
+        var cookiesArray = document.cookie.split(';');
+        cookieName += '=';
+        for (var i = 0; i < cookiesArray.length; i++) {
+          var cookie = cookiesArray[i];
+          while (cookie.charAt(0) == ' ') {
+            cookie = cookie.substring(1, cookie.length);
+          }
+          if (cookie.indexOf(cookieName) === 0) {
+            result = cookie.substring(cookieName.length, cookie.length);
+          }
+        }
+        return result;
+      }
+
+      function tryParseJSON (jsonString) {
+        try {
+          var o = JSON.parse(jsonString);
+          if (o && typeof o === 'object') {
+            return o;
+          }
+        } catch (e) {
+        }
+        return false;
+      }
+
+      window.addEventListener('message', function (event) {
+        var oEventData = (typeof event.data !== 'object') ? tryParseJSON(event.data) : event.data;
+        if (oEventData.method === 'requestCredentials') {
+          var cookieCredentials = getCookie('credentials');
+          window.top.postMessage(JSON.stringify({
+            method: oEventData.replyTo || 'emitCredentials',
+            params: cookieCredentials
+          }), '*');
+        }
+      }, false);
+    </script>
+  </head>
+<body>
+</body></html>

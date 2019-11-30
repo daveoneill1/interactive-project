@@ -1,0 +1,2288 @@
+//ARTICLE TEMPLATE SCRIPTING
+var ua = window.navigator.userAgent; //current User Agent
+var msie = ua.indexOf("MSIE "); //IE User Agent Match(returns boolean)) 
+
+
+//GET domain to start Site Check for Global Site Variables
+var global_domain = document.domain;
+var global_site_full = global_domain.replace("www.", "");
+var global_site_full = global_site_full.replace("www1.", "");
+var global_site_full = global_site_full.replace("tmp.", "");
+var global_site = global_site_full.replace(".com", ""); 
+var global_site_title;
+var disqus_shortname;
+var twt_related;
+
+if( global_site == "realclearpolitics" ){ //RCP
+	global_site_title = 'RealClearPolitics';
+	disqus_shortname = 'realclearpolitics';
+	twt_related = 'RealClearNews';
+}else if( global_site == "realclearworld" ){ //RCW
+	global_site_title = 'RealClearWorld';
+	disqus_shortname = 'realclearworld9';
+	twt_related = 'realclearworld';
+}else if( global_site == "future.realcleartechnology" || global_site == "realclearfuture" ){ //RCF
+	global_site_title = 'RealClearFuture';
+	disqus_shortname = 'realcleartechnology';
+	twt_related = 'realclearfuture';
+}else if( global_site == "realclearhealth" ){ //RCH
+	global_site_title = 'RealClearHealth';
+	disqus_shortname = 'realclearhealth';
+	twt_related = 'realclearhealth';
+}else if( global_site == "dev.realcleardefense" || global_site == "realcleardefense" ){ //RCD
+	global_site_title = 'RealClearDefense';
+	disqus_shortname = 'realcleardefense';
+	twt_related = 'rcdefense';
+}else if( global_site == "dev.realclearenergy" || global_site == "realclearenergy" || global_site == "realclearenergy.org" ){ //RCE
+	global_site_title = 'RealClearEnergy';
+	disqus_shortname = 'realclearenergy';
+	twt_related = 'realclearenergy';
+}else if( global_site == "dev.realclearscience" || global_site == "realclearscience" ){ //RCE
+	global_site_title = 'RealClearScience';
+	disqus_shortname = 'realclearscience';
+	twt_related = 'rcscience';
+}else if( global_site == "dev.realclearpolicy" || global_site == "realclearpolicy" ){ //RCE
+	global_site_title = 'RealClearPolicy';
+	disqus_shortname = 'realclearpolicy';
+	twt_related = 'realclearpolicy';
+}else if( global_site == "dev.realcleareducation" || global_site == "realcleareducation" ){ //RCE
+	global_site_title = 'RealClearEducation';
+	disqus_shortname = 'realcleareducation';
+	twt_related = 'realcleareducation';
+}else if( global_site == "dev.realcleareducation" || global_site == "realcleareducation" ){
+	global_site_title = 'RealClearEducation';
+	disqus_shortname = 'realcleareducation';
+	twt_related = 'realcleareducation';
+}else if( global_site == "dev.realclearreligion" || global_site == "realclearreligion" ){
+	global_site_title = 'RealClearReligion';
+	disqus_shortname = 'realclearreligion';
+	twt_related = 'realclearrelig';
+}else if( global_site == "dev.realclearbooks" || global_site == "realclearbooks" ){
+	global_site_title = 'RealClearBooks';
+	disqus_shortname = 'realclearbooks';
+	twt_related = 'realclearbooks';
+}else if( global_site == "dev.realclearhistory" || global_site == "realclearhistory" ){
+	global_site_title = 'RealClearHistory';
+	disqus_shortname = 'realclearhistory';
+	twt_related = 'realclearhistry';
+}else if( global_site == "dev.realclearsports" || global_site == "realclearsports" ){
+	global_site_title = 'RealClearSports';
+	disqus_shortname = 'realclearsports';
+	twt_related = 'realclearsports';
+}else if( global_site == "dev.realclearmarkets" || global_site == "realclearmarkets"  || global_site == "dev.markets.realclearpolitics"  ){
+	global_site_title = 'RealClearMarkets';
+	disqus_shortname = 'realclearmarkets';
+	twt_related = 'rc_markets';
+}
+
+console.log("Domain: " + global_site);
+
+/*************** END GLOBAL SITE CHECKS **********************/
+ 
+var beta_html = '<div class="widget_slot init"></div><div class="RC-AD RC-AD-BOX-TOP"></div><div class="widget_slot init"></div><div class="RC-AD RC-AD-BOX-BOTTOM"></div><div class="widget_slot init"></div><div class="RC-AD RC-AD-BOX-BOTTOM-600"></div>';
+
+//var stream_tags = {};
+
+//NON HTML5 SUPPORT/BROWSERS MOCK HISTORY API USAGE - NEEDS HASH ON UNSUPPORTED VERSIONS
+//IF <= IE 9 CHECK FOR HASH IN URL - IF EXISTS RELOAD PAGE WITH NEW PERMALINK LOCATION - FOR NON HTML5 BROWSERS
+function getUrlHash(){
+	var vars = [], hash;
+	var hashes = window.location.href.slice(window.location.href.indexOf('#') + 1).split('&');
+
+	for(var i = 0; i < hashes.length; i++){
+		hash = hashes[i].split('=');
+		vars.push(hash[0]);
+		vars[hash[0]] = hash[1];
+	}
+	return vars;
+}
+
+ var redir = getUrlHash()['redir'];
+
+ if(redir!="" && redir!=undefined){
+		 location.replace(redir);
+ } 
+
+/*$(document).ready(function(){
+	
+	if (msie > -1 || !!navigator.userAgent.match(/Trident.*rv\:11\./)){ // If Internet Explorer, return version number
+		//alert(parseInt(ua.substring(msie + 5, ua.indexOf(".", msie))));
+	}
+	else  // If another browser, return 0
+	{
+		//alert('otherbrowser');
+		progressBar();
+	}
+
+	//M.B. TURNED OFF PRE-LAUNCH WILL TURN BACK ON INF. SCROLL POST LAUNCH
+	fetchArticleLocs();
+	//$('.footer-wrapper').before('<div class="nextArticle"></div>');
+	//initWaypoint();
+
+	//if any inline(align center) images present(via editor thru tiny/CMS) strip the width/height attrs as they break RWD
+	if( $(".body-photo-inline .body-photo img").length>0 ){
+		$(".body-photo-inline .body-photo img").removeAttr('width').removeAttr('height');
+	}
+	
+	nextArticleTracker();			
+	
+	//Sharepoints Handler - Will open pop-up to tweet Title - Sharepoint Text URL For Given Sites
+	if( $(".sharepoint-wrapper").length > 0 && (global_site == "dev.realcleardefense" || global_site == "realcleardefense")  ){						
+		$(".sharepoint-icon").click(function() {
+			var ref_url = window.location.href;
+			var ref_title = $(document).find("title").text();
+			var share_text = $(this).next(".sharepoint-text").text();
+			var twt_share_text = ref_title + ' - ' + share_text;
+			var share_url = 'http://twitter.com/share?url='+encodeURIComponent(ref_url)+'&amp;text='+ encodeURIComponent(twt_share_text) +'&amp;related='+twt_related;			
+			share_url = share_url.replace("039", "");
+			share_url = share_url.replace("'", "");
+			
+            rctools_openShareWindow('twitterwindow',share_url);
+        });
+	}
+
+
+});*/ //End DOC READY
+
+//got moved to master
+/*function loadGotChosen(){
+    $('#comments-container, #fb-comments-container').after('<div class="clear" style="margin-top:10px;"></div> <div class="ndn_article_body_title">Advertisement</div><div id="gotChosen"></div>');
+
+    (function(e,t,n,r,i,s,o){e["GotChosenObject"]=i;e[i]=e[i]||function()
+    {(e[i].q=e[i].q||[]).push(arguments)},e[i].l=1*new
+    Date;s=t.createElement(n),o=t.getElementsByTagName(n)
+        [0];s.async=1;s.src=r;o.parentNode.insertBefore(s,o)})
+    (window,document,"script","https://www.gotchosen.com/thirdparty/gc.js","gc");
+    gc("webcurtain", gotChosenID , { widgets: { autoinstall: [ { type: 'carousel-multi', selector: '#gotChosen', insertion: 'into' } ] } });
+
+}*/
+
+// function loadLockerdome(){
+
+// 	if(evolok_init_finished) { // Evolok is enabled
+
+// 		if(!evolok_do_ads) {
+// 			// Just skip and wait for next function call for a status change
+// 			return;
+// 		}
+// 		// Otherwise go ahead and do ads
+// 	}
+
+// 		switch(siteName){
+// 			case "policy":				
+// 				//locker_id = 9006230907825511;
+// 				//locker_slot = "ld-7267-9981";
+// 				locker_id = 9006230907825511;
+// 				locker_slot = "ld-645-588";
+// 				break;
+// 			case "markets":
+// 				locker_id = 9006232250002791;
+// 				locker_slot = "ld-865-4641";
+// 				break;
+// 			case "world":
+// 				//locker_id = 9006233357299047;
+// 				//locker_slot = "ld-8840-351";
+// 				locker_id = 9006233357299047;
+// 				locker_slot = "ld-8350-5589";
+// 				break;
+// 			case "defense":
+// 				locker_id = 9006234598813031;				            
+// 				locker_slot = "ld-6105-3936";
+// 				break;
+// 			case "energy":
+// 				//locker_id = 9006235739663719;
+// 				//locker_slot = "ld-4915-4932";
+// 				locker_id = 9006235739663719;
+// 				locker_slot = "ld-4747-8305";
+// 				break;
+// 			case "science":
+// 				//locker_id = 9006236947623271;
+// 				//locker_slot = "ld-814-3826";
+// 				locker_id = 9006236947623271;
+// 				locker_slot = "ld-5443-4769";
+// 				break;
+// 			case "religion":
+// 				//locker_id = 9006238054919527;
+// 				//locker_slot = "ld-53-8937";
+// 				locker_id = 9006238054919527;
+// 				locker_slot = "ld-8524-5884";
+// 				break;
+// 			case "politics":
+// 				locker_id= 8988720963702375;
+// 				locker_slot="ld-8584-1267";
+// 			case "history":
+// 				locker_id = 9371487677427814;
+// 				locker_slot = "ld-1371-6729";
+// 			default:
+// 				locker_id = 8988720963702375;
+// 				locker_slot="ld-8584-1267"; 
+// 		}
+
+
+// 	    //LOCKERDOME POLITICS ARTICLE AD 
+// 		$('#comments-container, #fb-comments-container').after('<div class="clear" style="margin-top:10px;"></div><div class="ndn_article_body_title">Advertisement</div><div id="'+locker_slot+'"></div>');
+// 		(function(w,d,s,i){
+// 			w.ldAdInit=w.ldAdInit||[];
+// 			w.ldAdInit.push({
+// 				slot:locker_id,
+// 				size:[0, 0],
+// 				id:locker_slot
+// 			}); 
+// 			if(!d.getElementById(i)){
+// 				var j=d.createElement(s),p=d.getElementsByTagName(s)[0];
+// 				j.async=true;
+// 				j.src="//cdn2.lockerdome.com/_js/ajs.js"; 
+// 				j.id=i;p.parentNode.insertBefore(j,p);
+// 			}
+// 		})(window,document,"script","ld-ajs");    
+// }
+
+
+
+
+
+//filter function to strip duplicates from array - clean results
+/*function unique(list) {
+  var result = [];
+  $.each(list, function(i, e) {
+    if ($.inArray(e, result) == -1) result.push(e);
+  });
+  return result;
+}*/
+
+//TRIGGER TO INIT INFINITE SCROLL - GET FIRST DATA SET
+//M.B. TURNED OFF PRE-LAUNCH - WILL ENABLE POST LAUNCH!!!!
+/*$(window).scroll(function() { //scrolling down - when last viewport is visible in window - bottom reached
+    if($(window).scrollTop() == $(document).height() - $(window).height()) {
+		fetchArticleData();
+		
+		try{ 
+			_gaq.push(['_trackEvent', 'Infinite Scroll', 'Article Loaded', ''+window.location+'']); 		
+		} catch(err) {} 
+		
+    }
+});*/
+
+
+
+
+
+/*
+
+//---- UP NEXT SCROLL TRIGGER FEATURE --//
+
+function nextArticleTracker(){
+	//Next Article Pop-up click handler
+	//console.log("handler fired...");
+	//$(".upNext-container a.jqGAQ img").click(function(){
+	$('body').on('click', '.jqGAQ img', function() {		
+		var nextArticle = $( this ).parent().attr("href");
+		//console.log("Link: " + nextArticle);
+		_gaq.push(['_trackEvent', 'Up Next Pop', 'Click', 'Articles Module - ' + global_site_title +' '+ nextArticle, null, true]);
+
+
+		//_gaq.push(['_trackEvent', 'Outbound Link Click', module, ob_link,, true]);
+	});
+
+} //end nextArticleTracker Handler
+
+function get_scroll_percent_() {
+    var s = $(window).scrollTop(),
+    d = $(document).height(),
+    c = $(window).height();
+
+	return scrollPercent = (s / (d-c)) * 100;
+}
+
+ 
+
+//triggers up next popup when bottom of screen reached
+var up_next_shown = false;
+var last_scroll_position = 0;
+var scrolled_towards_bottom = false;
+var passed_scroll_to_trigger = false;
+var pop_height_needed = 428;
+$(window).scroll(function() { //scrolling down - when last viewport is visible in window - bottom reached
+
+	//get the position of the right column
+	var space_between_rc_and_footer = 0;
+	var windowWidth = $(window).outerWidth();
+
+	var right_column_pos = $('.beta').offset();
+	var right_column_height = $('.beta').height();
+	var bottom_of_right_column = right_column_pos.top + right_column_height;
+
+	var footer_pos = $('.footer-wrapper').offset();
+	
+	space_between_rc_and_footer = footer_pos.top - bottom_of_right_column;
+
+	//need at least 450 pixels to display up next pop up below right column
+	//on mobile we just display it no matter what the space is
+	//on large screens we don't the space since it is displayed next the right column instead of below
+	if(space_between_rc_and_footer >= 450 || windowWidth < 767 || windowWidth >= 1800 ){
+
+		//get window details and set checkers
+		var window_scroll_top = $(window).scrollTop();
+		var window_height = $(window).height();
+		var scroll_bottom = 0;
+		var last_scroll_check = 0;
+
+		if(parseInt(windowWidth) >= 1800){
+			//console.log(get_scroll_percent_());
+			scroll_bottom = get_scroll_percent_();
+			temp = scroll_bottom.toString().split('.');
+			last_scroll_check = parseInt(temp[0]);
+			position_check = 50;
+		}else if(parseInt(windowWidth) >= 1025){
+			scroll_bottom = window_scroll_top+window_height;
+			last_scroll_check = last_scroll_position;
+			position_check = bottom_of_right_column+428;
+		}else{
+			scroll_bottom = window_scroll_top+window_height;
+			last_scroll_check = last_scroll_position;
+			position_check = footer_pos.top - 428;
+		}	
+
+		if(window_scroll_top > last_scroll_position){
+			scrolled_towards_bottom = true;
+		}else{
+			scrolled_towards_bottom = false;
+		}
+
+		if(last_scroll_check > position_check){
+			passed_scroll_to_trigger = true;
+		}else{
+			passed_scroll_to_trigger = false;
+		}
+
+		last_scroll_position = window_scroll_top;
+	    if( scroll_bottom > position_check && scrolled_towards_bottom == true) {
+
+			var trigger_checks = false;
+			if(up_next_shown == false && passed_scroll_to_trigger == false){
+				trigger_checks = true;
+				if(windowWidth >= 1800){
+					//position right of right column
+					//gets the height of the window divided by 2
+					var top_value = (window_height/2)-150;
+					var up_next_top_position = {'top':top_value+'px', 'bottom': 'inherit', 'position':'fixed'}
+				}else if(windowWidth >= 1025){
+					//position below right column
+					var top_value = window_height - pop_height_needed - 160;
+					var up_next_top_position = {'top':top_value+'px', 'bottom': 'inherit', 'position':'fixed'}
+				}else if(windowWidth < 768){
+					var top_value = footer_pos.top - pop_height_needed + 62;
+					var up_next_top_position = {'top':top_value+'px', 'bottom': 'inherit', 'position':'absolute'}
+				}else{
+					//position above footer
+					var top_value = footer_pos.top - pop_height_needed;
+					var up_next_top_position = {'top':top_value+'px', 'bottom': 'inherit', 'position':'absolute'}
+				}
+			}else if(up_next_shown == true && windowWidth >= 1025 && windowWidth < 1800){
+				//this makes it fixed when scrolling down on 1025 to 1799 to be scrollable below right column
+				var top_value = window_height - pop_height_needed - 160;
+				var up_next_top_position = {'top':top_value+'px', 'bottom': 'inherit', 'position':'fixed'}
+				$(".upNext-popup-wrapper").css(up_next_top_position);
+			}
+
+			
+			if( $(".upNext-popup-wrapper").length == 0 && trigger_checks == true){
+				fetchArticleData(up_next_top_position);
+				var ga_data = {
+					'ge_action' : 'Scroll',
+					'ge_category' : 'Up Next Pop',
+					'ge_label' : 'Up Next Pop Large Screen'
+				};
+				send_ga_event(ga_data);
+			}else if( $(".upNext-popup-wrapper").is(":hidden") && windowWidth >= 768 && trigger_checks == true){
+				$(".upNext-popup-wrapper").show();
+				$(".upNext-popup-wrapper").animate({ "right": "8px" }, "slow" );
+				$(".upNext-popup-wrapper").css(up_next_top_position);
+				var ga_data = {
+					'ge_action' : 'Scroll',
+					'ge_category' : 'Up Next Pop',
+					'ge_label' : 'Up Next Pop Medium Screen'
+				};
+				send_ga_event(ga_data);
+			}else if( $(".upNext-popup-wrapper").is(":hidden") && windowWidth < 768  && trigger_checks == true){
+				$(".upNext-popup-wrapper").show();
+				$(".upNext-popup-wrapper").animate({ "right": "5px" }, "slow" );
+				var ga_data = {
+					'ge_action' : 'Scroll',
+					'ge_category' : 'Up Next Pop',
+					'ge_label' : 'Up Next Pop Small Screen'
+				};
+				send_ga_event(ga_data);
+			}
+			
+	    }else{
+	    	//on this screen size we don't want it to go over the right column
+	    	if(windowWidth >= 1025 && windowWidth < 1800){
+	    		if(scrolled_towards_bottom == false && scroll_bottom < position_check){
+	    			var top_value = bottom_of_right_column;
+	    			var up_next_top_position = {'top':top_value+'px', 'bottom': 'inherit', 'position':'absolute'}
+	    			$(".upNext-popup-wrapper").css(up_next_top_position);
+	    		}	    		
+	    	}
+
+	    }
+	}
+});
+*/
+
+
+
+//init articles array, post position while looping/infinite loop, and setting max limit on posts
+var articles = [];
+var position = 0;
+var limit = 50;
+
+function fetchArticleLocs(){ //fires on .ready - grabs all 50 posts in trending articles json file
+var current_loc = window.location.href;
+
+var current_js = current_loc.replace(".html", ".js");
+//var current_js = 'http://www1.realclearpolitics.com/articles/2016/02/15/the_regional_response_to_zika_129640.js';
+//console.log("current_js: "+ current_js);
+
+$.ajax({
+		dataType: 'json',
+		url: current_js,
+		success: function(data){
+			$(data.article).each(function(index,key){
+
+				var article = key;
+				var queued = article.queued.type;
+				var post_ids = article.queued.post_ids;
+				var scroll_status = article.scroll_status;
+				
+				
+				//alert(scroll_status);
+				
+				//if( scroll_status == "disabled" ){
+					//return;
+				//}else{
+					if( queued == "default" ){ //if no custom queue was selected we will pull a special algorith based trending article file of top 50
+
+						$.ajax({
+							dataType: 'json',
+							url: "/json/trending_articles.json",
+							success: function(data){
+								$(data).each(function(i,k){
+									var article = k;
+									var title = article.title;
+	
+									//article.url = article.url.replace( "www.", "dev.www1." );
+									//alert('Default: '  + title);
+	
+									if( article.url !== current_loc ){
+										article.url = article.url.replace(".html", ".js");
+										articles.push( article );
+									}
+	
+								}); //end success on first ajax call
+	
+								var article_loc = articles[0].url.replace(".js", ".html");
+
+								$('.up-next .title').html('<a class="top-up-next-link" href="'+article_loc+'">'+articles[0].title+'</a>');
+	
+							}
+	
+						}); //end first ajax call to get first post in infinite scroll
+	
+	
+					}else{ //type custom queue
+	
+						$(post_ids).each(function(k,v){
+							var article = v;
+							var pID = article.id;
+							var url = article.url;
+							var title = article.title;
+							
+							//alert('Custom: ' + title);
+	
+							if( url !== current_loc ){
+								url = url.replace(".html", ".js");
+								articles.push( article );
+							}
+	
+	
+						}); //end success on first ajax call
+	
+						var article_loc = articles[0].url.replace(".js", ".html");
+	
+						$('.up-next .title').html('<a class="top-up-next-link" href="'+article_loc+'">'+articles[0].title+'</a>');
+	
+					}
+				//}
+				
+
+			}); //end success on first ajax call
+
+		}
+
+	}); //end first ajax call to get first post in infinite scroll
+
+}
+
+function fetchArticleData(up_next_top_position){ //fires when bottom of document is reached
+
+	//console.log(articles);
+
+	if( position == 49 ){ return; };
+
+	if( position < articles.length ){
+		up_next_shown = true;
+		var article_id = articles[position].id;
+
+		var articleLoc = articles[position].url;
+		var prev_url;
+
+		if( position == 0 ){
+			prev_url = articleLoc;
+			prev_url = prev_url.replace(".js", ".html");
+		}
+
+		if( position > 0 ){
+			var prevTitle = articles[(position-1)].title;
+			prev_url = articles[(position-1)].url;
+			prev_url = prev_url.replace(".js", ".html");
+		}
+
+		if( position < articles.length-1 ){
+			var nextTitle = articles[(position+1)].title;
+			var next_url = articles[(position+1)].url;
+			next_url = next_url.replace(".js", ".html");
+		}
+
+		articleLoc = articleLoc.replace(".html", ".js");
+
+		$.ajax({
+			dataType: 'json',
+			url: articleLoc,
+			success: function(data){
+				$(data.article).each(function(i,k){
+					var id = k.id;
+					var title = k.title;
+					var date = k.date;
+					var author = k.author;
+					var auth_info = k.authors_info;
+						var auth_img;
+						$.each(auth_info, function(k,v){
+							auth_img = v.picture_loc;
+						});
+					var desc = k.description;
+					var footer = k.footer;
+					var layout = k.layout;
+					var cropTop = k.img_crop_top;
+					var titleColor = k.entry_title_color;
+					var titleAlign = k.main_title_align;
+					var img_src = k.img_url;
+
+					if( layout === "long" ){
+						//build long article
+						//buildLongArticle(position, id, date, title, nextTitle, author, desc, footer, articleLoc, prev_url, next_url, auth_img, layout, img_src, cropTop, titleColor, titleAlign);
+						//resetConfigs(position, articleLoc, title, prev_url, layout);
+						buildUpNext(up_next_top_position, position, id, date, title, nextTitle, author, desc, footer, articleLoc, prev_url, next_url, auth_img, layout, img_src, cropTop, titleColor, titleAlign);
+					}else if( layout === "standard" ){
+						//build short/original article
+						//buildArticle(position, id, date, title, nextTitle, author, desc, footer, articleLoc, prev_url, next_url, auth_img, layout, img_src, cropTop);
+						//resetConfigs(position, articleLoc, title, prev_url, layout);
+						buildUpNext(up_next_top_position, position, id, date, title, nextTitle, author, desc, footer, articleLoc, prev_url, next_url, auth_img, layout, img_src, cropTop);
+					}
+				});
+			}
+		}); //end single post ajax call
+
+		++position;
+	}
+
+
+}
+
+function buildUpNext(up_next_top_position, position, id, date, title, nextTitle, author, desc, footer, articleLoc, prev_url, next_url, auth_img, layout, img_src, cropTop){
+		var img_src_5 = img_src.replace('.jpg', '_5_.jpg');
+		var pos = position;
+		var articleTitle = title;
+		var nextTitle = nextTitle;
+		var bodyText = desc;
+		var footerText = footer;
+		var author = author;
+		var authLink = author.toLowerCase().replace(" ", "_");
+		authLink = 'http://www.'+global_site+'.com/authors/' + authLink;
+		var article_url = articleLoc;
+		article_url = article_url.replace(".js", ".html");
+
+		var crop = cropTop;
+
+		var crop_perc = Math.floor((parseInt(crop) / 220) * 100);
+
+
+		var authPhoto = auth_img;
+		if( authPhoto != "" ){
+			authPhoto = '<div class="auth-photo"><img src="'+ authPhoto +'"></div>';
+		}else{
+			authPhoto = '';
+		}
+
+		var dateStr = date;
+		var d = new Date(dateStr);
+
+		var monthNames = ["January", "February", "March", "April", "May", "June",
+		  "July", "August", "September", "October", "November", "December"
+		];
+
+		var month = monthNames[d.getMonth()];
+		var day = d.getDate();
+		day = (day < 10 ? '0' : '') + day;
+		var year = d.getFullYear();
+
+		var timeStamp = month + ' ' + day + ', ' + year;
+
+		/*pageBottom += ' <div class="comments-count">'
+			pageBottom += '<span class="showComments"><a href="'+article_url+'">Show comments</a></span><span class="count"><a href="' + article_url + '#disqus_thread" class="thread-count"></a></span>'
+		pageBottom += '</div>'*/
+		
+		var popup = $('.upNext-container');
+		var pop_output = '';
+		
+		if( img_src == "" ){
+			pop_output += '<div class="upNext-popup-wrapper">';
+				pop_output += '<div class="upNext-popup">';
+					pop_output += '<div class="label">Up Next from '+global_site_title+' <span class="close">X</span> </div>';
+					pop_output += '<div class="photo">';
+						//pop_output += '<a class="jqGAQ" href="'+article_url+'"><img src="'+img_src+'" /></a>';
+						pop_output += '<div class="title-wrapper"><div class="title"><a href="'+article_url+'">'+articleTitle+'</a></div></div> ';
+						pop_output += '<div class="byline">'+author+'</div>  ';
+					pop_output += '</div>';
+					
+				pop_output += '</div>';
+			pop_output += '</div>';
+		}else{
+			pop_output += '<div class="upNext-popup-wrapper">';
+				pop_output += '<div class="upNext-popup">';
+					pop_output += '<div class="label">Up Next from '+global_site_title+' <span class="close">X</span> </div>';
+					pop_output += '<div class="photo">';
+						pop_output += '<a class="jqGAQ" href="'+article_url+'"><img src="'+img_src+'" /></a>';
+						pop_output += '<div class="title-wrapper"><div class="title"><a href="'+article_url+'">'+articleTitle+'</a></div></div> ';
+						pop_output += '<div class="byline">'+author+'</div>  ';
+					pop_output += '</div>';
+					
+				pop_output += '</div>';
+			pop_output += '</div>';
+		}
+		
+
+		$(popup).html(pop_output);
+		$(".upNext-popup-wrapper").css(up_next_top_position);
+		up_next_shown = true;
+		
+		//HIDE UP NEXT POPUP
+		$(".upNext-popup-wrapper .close").click(function(){
+			$(".upNext-popup-wrapper").hide();
+			$(".upNext-popup-wrapper").css({ "right" : "-400px" });
+			up_next_shown = false;
+		});
+		
+		var windowWidth = $(window).outerWidth();
+		if( windowWidth >= 768 ){
+			if( $(".upNext-popup-wrapper").is(":hidden") ){
+				$(".upNext-popup-wrapper").show();
+				$(".upNext-popup-wrapper").animate({ "right": "8px" }, "slow" );
+			}else{
+				$(".upNext-popup-wrapper").animate({ "right": "8px" }, "slow" );
+			}
+		}else{
+			if( $(".upNext-popup-wrapper").is(":hidden") ){
+				$(".upNext-popup-wrapper").show();
+				$(".upNext-popup-wrapper").animate({ "right": "5px" }, "slow" );
+			}else{
+				$(".upNext-popup-wrapper").animate({ "right": "5px" }, "slow" );
+			}
+		}
+		
+
+}
+
+//build standard article - also used for AP Stories and Newsletter Articles - Infinite Scroll
+function buildArticle(position, id, date, title, nextTitle, author, desc, footer, articleLoc, prev_url, next_url, auth_img, layout, img_src, cropTop){
+		var img_src_5 = img_src.replace('.jpg', '_5_.jpg');
+		var pos = position;
+		var articleTitle = title;
+		var nextTitle = nextTitle;
+		var bodyText = desc;
+		var footerText = footer;
+		var author = author;
+		var authLink = author.toLowerCase().replace(" ", "_");
+		authLink = 'http://www.realclearpolitics.com/authors/' + authLink;
+		var article_url = articleLoc;
+		article_url = article_url.replace(".js", ".html");
+
+		var crop = cropTop;
+
+		var crop_perc = Math.floor((parseInt(crop) / 220) * 100);
+
+
+		var authPhoto = auth_img;
+		if( authPhoto != "" ){
+			authPhoto = '<div class="auth-photo"><img src="'+ authPhoto +'"></div>';
+		}else{
+			authPhoto = '';
+		}
+
+		var dateStr = date;
+		var d = new Date(dateStr);
+
+		var monthNames = ["January", "February", "March", "April", "May", "June",
+		  "July", "August", "September", "October", "November", "December"
+		];
+
+		var month = monthNames[d.getMonth()];
+		var day = d.getDate();
+		day = (day < 10 ? '0' : '') + day;
+		var year = d.getFullYear();
+
+		var timeStamp = month + ' ' + day + ', ' + year;
+
+		//Disqus ID - 200(article)+article ID - required for reset
+		var dID = '200'+id;
+		//reset Disqus - required due to only being able to call embed.js once per page and only one comments widget per page.
+		//Allows you to reset the one "instance" initially loaded - used for resetting/populating comment counts as they are ajaxed in
+		var resetDisqus = function (newIdentifier, newUrl, newTitle) {
+			DISQUS.reset({
+				reload: true,
+				config: function () {
+					this.page.identifier = newIdentifier;
+					this.page.url = newUrl;
+					this.page.title = newTitle;
+				}
+			});
+		};
+
+		resetDisqus(dID, article_url, title); //resets Disqus setups - embed.js, initial count.js
+		window.DISQUSWIDGETS = undefined; //resets Disqus counts
+		$.getScript("http://" + disqus_shortname + ".disqus.com/count.js");
+
+
+
+		//if article uses footer text append below main body content
+		if( footerText != "" ){
+			footerText = '<h3>In Conclusion</h3>' + footerText;
+		}else{
+			footerText = '';
+		}
+
+		//page bottom object is used to load in bottom social shares/stats, share buttons, and new Disqus wrappers
+		var pageBottom = '<div class="article-social-bottom-wrapper">'
+			pageBottom += '<div class="article-social-bottom">'
+				pageBottom += '<div class="socialBar" data-src-url="'+article_url+'" data-style="short" data-dialog="share">'
+					pageBottom += '	<div class="left toolset"></div>'
+				pageBottom += '</div>'
+			pageBottom += '</div>'
+		pageBottom += '</div>'
+
+		pageBottom += '<div class="socialBar-bottom-counts">'
+			pageBottom += '<div class="socialBar-clicks"></div>'
+			pageBottom += '<div class="socialBar-divide"></div>'
+			pageBottom += '<div class="socialBar-shares"></div>'
+		pageBottom += '</div>'
+
+		pageBottom += '<div class="comments-wrapper">'
+			pageBottom += '<div class="comments-label">Comment</div>'
+		pageBottom += '</div>'
+
+		/*pageBottom += ' <div class="comments-count">'
+			pageBottom += '<span class="showComments"><a href="'+article_url+'">Show comments</a></span><span class="count"><a href="' + article_url + '#disqus_thread" class="thread-count"></a></span>'
+		pageBottom += '</div>'*/
+
+		pageBottom += '<div class="comments-count">'
+            pageBottom += '<span class="show" style="display: inline-block;">Show comments</span><span class="hide" style="display: none;">Hide Comments</span> <span class="count"><a href="'+article_url+'#disqus_thread" class="thread-count">0</a></span>'
+
+		pageBottom += '</div>'
+
+		pageBottom += '<div id="comments-container">'
+         pageBottom +=	'<script type="text/javascript" src="http://util.realclearpolitics.com/comments/js/auth.js"></script>'
+          pageBottom +=	'<div class="auth"><a class="sign_in_pop" href="javascript:void(\'0\');">RCP Log In</a> | <a class="sign_up_pop" href="javascript:void(\'0\');">Register</a></div>'
+          pageBottom +=	'<div id="disqus_thread"></div>'
+          pageBottom +=	'<script type="text/javascript">'
+            pageBottom +=	'var disqus_identifier = '+dID+';'
+            pageBottom +=	'var dsq_site_shortname = \'realclearpolitics\';'
+          pageBottom +=	'</script>'
+          pageBottom +=	'<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=realclearpolitics">comments powered by Disqus.</a></noscript>'
+       pageBottom +=	'</div>';
+
+		//primary container for ajaxed content
+		var article = $('.nextArticle');
+
+		var articleText = '';
+
+		articleText += '<article data-layout="'+layout+'" data-url="'+article_url+'" data-title="'+articleTitle+'" data-article="' + pos + '">';
+
+		articleText += '<div class="progress-bar" style="max-width:1180px;"></div>';
+
+		//append page header
+		articleText += '<div class="page-header">'
+			+ '<div class="contentwrapper">'
+				+	'<div class="up-next">'
+					+	'<span class="label">up next: </span>'
+					+	'<span class="title">' + nextTitle + '</span>'
+				+	'</div>'
+			+	'</div>'
+			+	'<div class="now-reading">'
+				+	'<span class="label">now reading: </span>'
+				+	'<span class="title">' + articleTitle + '</span>'
+			+	'</div>'
+			+	'<div class="header-social">'
+				+	'<div class="socialBar" data-src-url="'+article_url+'" data-dialog="share" data-style="short"><div class="left toolset"></div></div>'
+				+	'<div class="socialBar-clicks"></div>'
+				+	'<div class="socialBar-divide"></div>'
+				+	'<div class="socialBar-shares"></div>'
+			+	'</div>'
+		+	'</div>';
+		
+		if (msie > -1 || !!navigator.userAgent.match(/Trident.*rv\:11\./)){ // If Internet Explorer, return version number
+			//alert(parseInt(ua.substring(msie + 5, ua.indexOf(".", msie))));
+			
+			if(img_src != ''){
+				//append hero
+				/*articleText += '<div style="background:url(\'' + img_src + '\') no-repeat scroll center -27px transparent; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src=' + img_src + ',sizingMethod=scale); -ms-filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src=' + img_src + ',sizingMethod=scale);" class="article-short-hero ri"></div>';	*/
+	
+				/*articleText += '<div class="article-short-hero ri" style="overflow:hidden;position:relative;">'
+					+ '<picture style="top: -' + crop_perc + '%;display:block;position:absolute;left:0;right:0;">'
+						+ '<!--[if IE 9]><video style="display: none;"><![endif]-->'
+							+ '<source srcset="'+img_src+'" media="(min-width: 768px)">'
+						+ '<!--[if IE 9]></video><![endif]-->'
+	
+						+ '<img srcset="/asset/img/pixel.gif" alt="'+ articleTitle +'" />'
+	
+						+ '<!--[if IE 7]>'
+							+	'<img src="'+img_src+'" alt="'+articleTitle+'" />'
+						+	'<![endif]-->'
+					+ '</picture> '
+				+ '</div>';*/
+				
+				articleText += '<div class="article-short-hero ri" style="overflow:hidden;position:relative;">'
+					+ '<img src="'+img_src+'" alt="'+articleTitle+'" /> '
+				+ '</div>';
+	
+				//append .article-body -> .alpha
+				articleText += '<div class="article-body">';
+			}else{
+				//append .article-body -> .alpha
+				articleText += '<div class="article-body" style="margin-top:62px;">';
+			}
+			
+		}
+		else  // If another browser, return 0
+		{
+			//alert('otherbrowser');
+			//progressBar();
+			
+			if(img_src != ''){
+				//append hero
+				/*articleText += '<div style="background:url(\'' + img_src + '\') no-repeat scroll center -27px transparent; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src=' + img_src + ',sizingMethod=scale); -ms-filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src=' + img_src + ',sizingMethod=scale);" class="article-short-hero ri"></div>';	*/
+	
+				articleText += '<div class="article-short-hero ri" style="overflow:hidden;position:relative;">'
+					+ '<picture style="top: -' + crop_perc + '%;display:block;position:absolute;left:0;right:0;">'
+						+ '<!--[if IE 9]><video style="display: none;"><![endif]-->'
+							+ '<source srcset="'+img_src+'" media="(min-width: 768px)">'
+						+ '<!--[if IE 9]></video><![endif]-->'
+	
+						+ '<img srcset="/asset/img/pixel.gif" alt="'+ articleTitle +'" />'
+	
+						+ '<!--[if IE 7]>'
+							+	'<img src="'+img_src+'" alt="'+articleTitle+'" />'
+						+	'<![endif]-->'
+					+ '</picture> '
+				+ '</div>';
+	
+				//append .article-body -> .alpha
+				articleText += '<div class="article-body">';
+			}else{
+				//append .article-body -> .alpha
+				articleText += '<div class="article-body" style="margin-top:62px;">';
+			}
+			
+		}
+
+		
+
+			articleText +=	'<div class="alpha">'
+				+	'<span class="section-border"></span>'
+
+				+	'<div class="article-top">'
+					+	'<div class="article-title-wrapper">'
+						+	'<div class=""><h1>' + articleTitle + '</h1></div>'
+					+	'</div>' //end title
+
+					+	'<div class="article-social">'
+						+	'<div data-dialog="share" data-style="short" class="socialBar"><div class="left toolset"></div></div>'
+					+	'</div>' //end social
+
+				+	'</div>' //end article top div
+
+				+	'<div class="article-auth">'
+					+ authPhoto
+
+                    +	'<div class="auth-byline">'
+                    	+	'<a href="' + authLink + '">' + author + '</a><br><span class="byline-date">'+ timeStamp +'</span>'
+                    +	'</div>'
+				+	'</div>' //end article auth div
+
+				+	'<div class="mobile-social-bar"><div class="socialBar" data-src-url="'+article_url+'" data-dialog="share" data-style="mobile"><div class="left toolset"></div></div></div>'
+				+	'<div class="clear"></div>'
+
+				//+	'<div style="display:none; background:url(\'/concepts/images/article-image-mobile.png\') no-repeat scroll center center transparent; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src=http://dev.www1.realclearpolitics.com/concepts/images/article-image-mobile.png,sizingMethod=scale); -ms-filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src=http://dev.www1.realclearpolitics.com/concepts/images/article-image-mobile.png,sizingMethod=scale);" class="mobile-hero"></div>' //end mobile hero div
+
+				// Mobile
+				+ '<div class="mobile-hero" style="overflow:hidden;position:relative;">'
+					+ '<picture style="top: -' + crop_perc + '%;display:block;position:absolute;left:0;right:0;">'
+						+ '<!--[if IE 9]><video style="display: none;"><![endif]-->'
+							+ '<source srcset="'+img_src_5+'" media="(max-width: 767px)">'
+						+ '<!--[if IE 9]></video><![endif]-->'
+
+						+ '<img srcset="/asset/img/pixel.gif" alt="'+ articleTitle +'" />'
+
+						+ '<!--[if IE 7]>'
+							+	'<img src="'+img_src_5+'" alt="'+articleTitle+'" />'
+						+	'<![endif]-->'
+					+ '</picture> '
+				+ '</div>'
+
+				+	'<div class="article-body-text">'
+
+					//init story stream markup
+					+	'<div class="story-stream-hover-wrapper">'
+                    +	    '<div class="story-stream-hover">'
+                    +    	'<div class="mobile-close-btn">X</div>'
+                    +   	'<div class="story-stream-hover-tab-up"></div>'
+                    +      '<div class="title-wrapper">'
+                    +            '<div class="label">Story Stream</div>'
+                    +            '<div class="title"></div>'
+                    +        '</div>'
+                    +        '<div class="text-wrapper">'
+                    +            '<div class="label">Recent Articles</div>'
+                    +        '</div>'
+                    +        '<div class="count-wrapper">'
+                    +            '<div class="recent-link">'
+                    +                '<ul>'
+					+                    '<li><a href="#">Article: Global Warming Lorem Ipsum Dolor Sit ...</a></li>'
+					+                    '<li><a href="#">Video: Global Warming Lorem Ipsum Dolor Sit ...</a></li>'
+					+                    '<li><a href="#">Entry: Global Warming Lorem Ipsum Dolor Sit ...</a></li>'
+					+                    '<li><a href="#">Twitter: Global Warming Lorem Ipsum Dolor Sit ...</a></li>'
+					+                    '<li><a href="#">Article: Global Warming Lorem Ipsum Dolor Sit ...</a></li>'
+                    +                '</ul>'
+                    +            '</div>'
+                    +        '</div>'
+                    +        '<div class="story-stream-hover-tab-down"></div>'
+                    +    '</div>'
+                    +	'</div>'
+
+					+	bodyText
+
+					+	footerText
+
+					+ pageBottom //disqus and share counts/stats
+
+					+ '<div id="taboolaWidget_' + pos + '" class="taboolaWidget" data-module="article" data-type="thumb"><h2>Related Articles</h2></div>'
+
+				+	'</div>' //end article body text div
+
+			+	'</div>' //end alpha div
+
+		+	'</div>'; //end article-body div
+
+		//destroy all instances of entire right rail and append new empty one per new article load
+		//$('.beta').remove();
+		//articleText += '<div class="beta">' + beta_html + '</div>';
+
+		articleText += '</article>';
+		//build article
+		article.append(articleText);
+
+}
+
+//build long form articles - infinite scroll
+function buildLongArticle(position, id, date, title, nextTitle, author, desc, footer, articleLoc, prev_url, next_url, auth_img, layout, img_src, cropTop, titleColor, titleAlign){
+		var pos = position;
+		var articleTitle = title;
+		var nextTitle = nextTitle;
+		var bodyText = desc;
+		var footerText = footer;
+		var author = author;
+		var authLink = author.toLowerCase().replace(" ", "_");
+		authLink = 'http://www.realclearpolitics.com/authors/' + authLink;
+		var article_url = articleLoc;
+		article_url = article_url.replace(".js", ".html");
+
+		var crop = cropTop;
+
+		var crop_perc = Math.floor((parseInt(crop) / 220) * 100);
+
+		var authPhoto = auth_img;
+		if( authPhoto != "" ){
+			authPhoto = '<div class="auth-photo"><img src="'+ authPhoto +'"></div>';
+		}else{
+			authPhoto = '';
+		}
+
+		var dateStr = date;
+		var d = new Date(dateStr);
+
+		var monthNames = ["January", "February", "March", "April", "May", "June",
+		  "July", "August", "September", "October", "November", "December"
+		];
+
+		var month = monthNames[d.getMonth()];
+		var day = d.getDate();
+		day = (day < 10 ? '0' : '') + day;
+		var year = d.getFullYear();
+
+		var timeStamp = month + ' ' + day + ', ' + year;
+
+		//Disqus ID - 200(article)+article ID - required for reset
+		var dID = '200'+id;
+		//reset Disqus - required due to only being able to call embed.js once per page and only one comments widget per page.
+		//Allows you to reset the one "instance" initially loaded - used for resetting/populating comment counts as they are ajaxed in
+		var resetDisqus = function (newIdentifier, newUrl, newTitle) {
+			DISQUS.reset({
+				reload: true,
+				config: function () {
+					this.page.identifier = newIdentifier;
+					this.page.url = newUrl;
+					this.page.title = newTitle;
+				}
+			});
+		};
+
+		resetDisqus(dID, article_url, title); //resets Disqus setups - embed.js, initial count.js
+		window.DISQUSWIDGETS = undefined; //resets Disqus counts
+		$.getScript("http://" + disqus_shortname + ".disqus.com/count.js");
+
+		//if article uses footer text append below main body content
+		if( footerText != "" ){
+			footerText = '<h3>In Conclusion</h3>' + footerText
+		}else{
+			return;
+		}
+
+		//page bottom object is used to load in bottom social shares/stats, share buttons, and new Disqus wrappers
+		var pageBottom = '<div class="bottom-center"><div class="article-social-bottom-wrapper">'
+			pageBottom += '<div class="article-social-bottom">'
+				pageBottom += '<div class="socialBar" data-src-url="'+article_url+'" data-style="short" data-dialog="share">'
+					pageBottom += '	<div class="left toolset"></div>'
+				pageBottom += '</div>'
+			pageBottom += '</div>'
+		pageBottom += '</div>'
+
+		pageBottom += '<div class="socialBar-bottom-counts">'
+			pageBottom += '<div class="socialBar-clicks"></div>'
+			pageBottom += '<div class="socialBar-divide"></div>'
+			pageBottom += '<div class="socialBar-shares"></div>'
+		pageBottom += '</div>'
+
+
+		pageBottom += '<div class="comments-wrapper">'
+			pageBottom += '<div class="comments-label">Comment</div>'
+		pageBottom += '</div>'
+
+		pageBottom += ' <div class="comments-count">'
+			pageBottom += '<span class="showComments"><a href="'+article_url+'">Show comments</a></span><span class="count"><a href="' + article_url + '#disqus_thread" class="thread-count"></a></span>'
+		pageBottom += '</div>'
+
+		pageBottom += '<div id="taboolaWidget_' + pos + '" class="taboolaWidget" data-module="article" data-type="thumb"><h2>Related Articles</h2></div>'
+
+		pageBottom += '</div></div>';
+
+		//primary container for ajaxed content
+		var article = $('.nextArticle');
+
+		var articleText = '';
+
+		articleText += '<article data-layout="'+layout+'" data-url="'+article_url+'" data-title="'+articleTitle+'" data-article="' + pos + '">';
+
+		articleText += '<div class="progress-bar" style="max-width:1180px;"></div>';
+
+		//append page header
+		articleText += '<div class="page-header">'
+			+ '<div class="contentwrapper">'
+				+	'<div class="up-next">'
+					+	'<span class="label">up next: </span>'
+					+	'<span class="title">' + nextTitle + '</span>'
+				+	'</div>'
+			+	'</div>'
+			+	'<div class="now-reading">'
+				+	'<span class="label">now reading: </span>'
+				+	'<span class="title">' + articleTitle + '</span>'
+			+	'</div>'
+			+	'<div class="header-social">'
+				+	'<div class="socialBar" data-src-url="'+article_url+'" data-dialog="share" data-style="short"><div class="left toolset"></div></div>'
+				+	'<div class="socialBar-clicks"></div>'
+				+	'<div class="socialBar-divide"></div>'
+				+	'<div class="socialBar-shares"></div>'
+			+	'</div>'
+		+	'</div>';
+
+				if(img_src != ''){
+					//append long form hero
+
+					articleText += '<div style="background:url(\'' + img_src + '\') no-repeat scroll center '+crop_perc+'% transparent; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src=' + img_src + ',sizingMethod=scale); -ms-filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src=' + img_src + ',sizingMethod=scale);" class="article-long-hero ri '+titleAlign+'">';
+
+					if( titleColor == "black" ){
+						articleText +=	'<div class="long-hero-details black-title">'
+							/*+   '<div class="long-hero-chapter">Chapter I</div>'*/
+							+	'<div class="long-hero-title"><h1>'+articleTitle+'</h1></div>'
+						+	'</div>'
+
+						+	'<div class="long-hero-auth black-byline">'
+							+	authPhoto
+
+							+   '<div class="auth-byline">'
+								+   '<a href="'+authLink+'">' + author + '</a><br /><span class="byline-date">'+ timeStamp +'</span>'
+							+   '</div>'
+						+	'</div><!-- end article auth div -->'
+
+					+	'</div><!-- end article long hero div -->';
+					}else{
+						articleText +=	'<div class="long-hero-details white-title">'
+							/*+   '<div class="long-hero-chapter">Chapter I</div>'*/
+							+	'<div class="long-hero-title"><h1>'+articleTitle+'</h1></div>'
+						+	'</div>'
+
+						+	'<div class="long-hero-auth white-byline">'
+							+	authPhoto
+
+							+   '<div class="auth-byline">'
+								+   '<a href="'+authLink+'">' + author + '</a><br /><span class="byline-date">'+ timeStamp +'</span>'
+							+   '</div>'
+						+	'</div><!-- end article auth div -->'
+
+					+	'</div><!-- end article long hero div -->';
+					}
+
+			}else{
+
+				articleText +=	'<div class="center-no-img">'
+					+	'<div class="long-hero-details black-title">'
+							/*+   '<div class="long-hero-chapter">Chapter I</div>'*/
+							+	'<div class="long-hero-title"><h1>'+articleTitle+'</h1></div>'
+						+	'</div>'
+
+						+	'<div class="long-hero-auth black-byline">'
+							+	authPhoto
+
+							+   '<div class="auth-byline">'
+								+   '<a href="'+authLink+'">' + author + '</a><br /><span class="byline-date">'+ timeStamp +'</span>'
+							+   '</div>'
+					+	'</div><!-- end article auth div -->'
+				+	'</div>'; //end center no img div
+			}
+
+			/*articleText += '<div class="sponsor-wrapper">'
+				+	'<div class="sponsor">'
+					+	'Brought to you by <img src="http://dev.www1.realclearpolitics.com/concepts/images/coke-icon.png" />'
+				+	'</div>'
+			+	'</div>';*/
+
+			articleText += '<div class="mobile-social-bar">'
+				+	'<div class="socialBar" data-src-url="'+article_url+'" data-style="mobile" data-dialog="share">'
+					+	'<div class="left toolset"></div>'
+				+	'</div>'
+			+	'</div>';
+
+			articleText += '<div class="article-body">'
+				+	'<div class="alpha-long">'
+					+    '<div class="article-body-text center">'
+
+					//init story stream markup
+						+	'<div class="story-stream-hover-wrapper">'
+						+	    '<div class="story-stream-hover">'
+						+    	'<div class="mobile-close-btn">X</div>'
+						+   	'<div class="story-stream-hover-tab-up"></div>'
+						+      '<div class="title-wrapper">'
+						+            '<div class="label">Story Stream</div>'
+						+            '<div class="title"></div>'
+						+        '</div>'
+						+        '<div class="text-wrapper">'
+						+            '<div class="label">Recent Articles</div>'
+						+        '</div>'
+						+        '<div class="count-wrapper">'
+						+            '<div class="recent-link">'
+						+                '<ul>'
+						+                    '<li><a href="#">Article: Global Warming Lorem Ipsum Dolor Sit ...</a></li>'
+						+                    '<li><a href="#">Video: Global Warming Lorem Ipsum Dolor Sit ...</a></li>'
+						+                    '<li><a href="#">Entry: Global Warming Lorem Ipsum Dolor Sit ...</a></li>'
+						+                    '<li><a href="#">Twitter: Global Warming Lorem Ipsum Dolor Sit ...</a></li>'
+						+                    '<li><a href="#">Article: Global Warming Lorem Ipsum Dolor Sit ...</a></li>'
+						+                '</ul>'
+						+            '</div>'
+						+        '</div>'
+						+        '<div class="story-stream-hover-tab-down"></div>'
+						+    '</div>'
+						+	'</div>'
+
+						+	bodyText
+
+						+	footerText
+
+						+ pageBottom //disqus and share counts/stats
+
+					+	'</div><!-- end article-body-text div -->'
+				+	'</div><!-- end alpha-long div -->'
+			+	'</div><!-- end article-body div -->';
+
+		articleText += '</article>';
+		//build article
+		article.append(articleText);
+
+}
+
+//All functions/handlers/scripts that need reset every time a new article, long short or otherwise, is built - used scrolling down only
+function resetConfigs(position, articleLoc, title, prev_url, layout){
+	var pos = position;
+	var article_url = articleLoc;
+	article_url = article_url.replace(".js", ".html");
+
+	//reset waypoints - refreshes/recalculates all waypoints on screen
+	initWaypoint(article_url, title, prev_url, layout);
+
+	//reload social tool bar(s)
+	loadSocialTools();
+
+	//reload all adverts on page
+	googletag.pubads().refresh();
+
+	//reset story stream popup handler(s)
+	//event checker - if has mouse fire hover func otherwise fire click func
+	$( ".stream-tag" ).on({
+	  click: function(e) {
+		storyStreamClick(e);
+	  }, mouseenter: function(e) {
+
+		storyStreamHover(e);
+	  }, touchstart: function(e) {
+		storyStreamClick(e);
+	  }, touchmove: function(e) {
+		storyStreamClick(e);
+	  }, touchleave: function(e) {
+		storyStreamClick(e);
+	  }
+	});
+
+	//reload right rail/.beta widgets and handlers
+	if(layout == "standard"){
+		create_widgets();
+	}
+
+	//reload taboola widgets - all conditions for what/where to load up in master.js - requires timeout or loads too quick for ajax content
+	setTimeout(taboolaWidget(pos), 2000);
+
+	//reset progress bar for new posts
+	if (msie > -1 || !!navigator.userAgent.match(/Trident.*rv\:11\./)){ // If Internet Explorer, return version number
+		//alert(parseInt(ua.substring(msie + 5, ua.indexOf(".", msie))));
+	}
+	else  // If another browser, return 0
+	{
+		//alert('otherbrowser');
+		progressBar();
+	}
+
+	//populateShares();
+	//get_pageviews();
+
+	showComments();
+	hideComments();
+
+}
+
+function progressBar(){
+
+  var bars = $('.progress-bar').length;
+
+  $(window).scroll(function (){
+
+	 var top = $(this).scrollTop();
+
+	// Calculate each article section
+	$("article").each(function(i){
+
+		var this_top = $(this).offset().top;
+		var height = $(this).height();
+		var this_bottom = this_top + height;
+		var percent = 0;
+
+		// Scrolled within current section - sets percentage based on position
+		if (top >= this_top && top <= this_bottom) { //if inside the "active" article
+			percent = ((top - this_top) / height) * 100;
+		}
+		else if (top > this_bottom) {
+			percent = 100;
+		}
+
+		//only active article will have less than 100 - if not active hide
+		if( percent == 100 ){
+			$(".progress-bar:eq("+i+")").hide();
+		}else{
+			$(".progress-bar:eq("+i+")").show();
+		}
+
+		//set width to progress bar of current article section(i)
+		$(".progress-bar:eq("+i+")").css("width", percent + "%");
+
+
+	}); //end .each article
+
+  }); //end window .scroll function
+
+}
+
+//track elements in viewport via waypoints lib - allows targeting of scroll direction
+//used with infinite scroll and waypoint direction to control right rail(.beta) widgets and history API
+function initWaypoint(article_url, title, prev_url, layout){
+	Waypoint.refreshAll(); //each time initWaypoint if fired/reset triggers all waypoints/triggers to re-calculate - resizing window will do same automatically
+
+		$('article').each(function() {
+            $(this).waypoint(function(direction){
+				var thisPost = $(this.element).attr("data-article");
+
+				if( direction === 'up' ){
+
+					var prevURL = $(this.element).prev().attr("data-url");
+					if( typeof prevURL === 'undefined' ){
+						var first = $('article').first().attr("data-url");
+						prevURL = first;
+					}
+
+					var prevLayout = $(this.element).prev().attr("data-layout");
+					if( typeof prevLayout === "undefined" ){
+						var uno = $('article').first().attr("data-layout");
+						prevLayout = uno;
+					}
+
+					//check if browser is HTML5 ready and if NOT append hash and reload -> If supports HTML5 use history api/jquery method to replace URL every time a new post is built in
+					if (typeof history.pushState === 'undefined') {	//no HTML5 support from browser - older IE's
+						 window.location.hash = 'redir='+prevURL+'';
+					} else {
+						  //window.history.replaceState(content, title, page url);
+						   window.history.replaceState(null, null, prevURL);
+					}
+
+					if( thisPost == "1" && prevLayout === "standard" ){
+						$(".beta").remove();
+						$('article').first().find(".article-body").after( '<div class="beta">' + beta_html + '</div>' );
+						create_widgets();
+						//reload all adverts on page
+						googletag.pubads().refresh();
+					}else if( thisPost == "0" ){
+						return;
+					}else{
+						if( prevLayout === "standard" ){
+							$(".beta").remove();
+							$(this.element).prev().find(".article-body").after( '<div class="beta">' + beta_html + '</div>' );
+							create_widgets();
+							//reload all adverts on page
+							googletag.pubads().refresh();
+						}
+					}
+
+					//populateShares();
+					//get_pageviews();
+
+				}else{ //SCROLLING DOWN
+					//check if browser is HTML5 ready and if NOT append hash and reload -> If supports HTML5 use history api/jquery method to replace URL every time a new post is built in
+					if( thisPost !=0 ){
+						if (typeof history.pushState === 'undefined') {	//no HTML5 support from browser - older IE's
+							 window.location.hash = 'redir='+article_url+'';
+						} else {
+							  //window.history.replaceState(content, title, page url);
+							   window.history.replaceState(null, null, article_url);
+						}
+					}
+
+					//alert(thisPost);
+
+					var nextLayout = $(this.element).attr("data-layout");
+					//var nt = $(this.element).attr("data-title");
+					
+					if( thisPost !=0 ){
+						if( nextLayout === "standard" ){
+							
+							//console.log('this would destroy all instances of .beta and write new beta div to this post');
+							$(".beta").remove();
+							$(this.element).find(".article-body").after( '<div class="beta">' + beta_html + '</div>' );
+							
+							//reinstantiate ads when rebuilding beta - reload only refires existing on page adverts need full reinit
+							loadAds();
+
+							create_widgets();
+							
+							
+						}else{
+							//console.log('post was long -> does not apply yo...');
+						}
+					}
+					
+
+					//populateShares();
+					//get_pageviews();
+
+				} //end if scrolling up/down check
+
+			}); //end .waypoint handler
+
+        }); //end .each article
+
+} //end initWaypoint func
+
+/********* LOADS GOOGLE DFP ADS **********/
+/********* INTO DIV SLOTS IN HTML *******/
+/*function loadAds(){ 
+
+	//CHECK IF API IS READY 
+	if (window.googletag && googletag.apiReady) {
+		//console.log('api ready');
+		clearInterval(gpt_api_ready_interval);
+	}else{ //IF NOT READY THEN DONT CONTINUE
+		return false;
+	}
+
+	//TRACKING INVERVALS FOR HOMEPAGE SPECIFIC WELCOME AND PREROLL ADS
+	if($("body").hasClass("home")){ //set interval check only if on homepage
+		RC_welcome_interval = setInterval(function(){ RC_welcome_tracking() }, 2000); //CHECKS TO SEE IF WELCOME-AD-DIV IS RENDERED
+		RC_homepage_video_interval = setInterval(function(){ RC_homepage_video_tracking() }, 2000);
+	}
+
+	//GA AD UNITS TO BE RENDERED
+	var ads_arr = [
+				 ["RC-AD-TOP-BANNER","div-gpt-ad-1390595004947-7","width:728px; height:auto;"],
+				 ["RC-AD-BOTTOM-BANNER","div-gpt-ad-1390595004947-6","width:728px; height:auto;"],
+				 ["RC-AD-BOX-TOP", "div-gpt-ad-1390595004947-5",""],
+				 ["RC-AD-BOX-MIDDLE", "div-gpt-ad-1390595004947-4",""],
+				 ["RC-AD-BOX-BOTTOM", "div-gpt-ad-1390595004947-3",""],
+				 ["RC-AD-BOX-BOTTOM-600", "div-gpt-ad-1416850836025-4", ""],
+				 ["RC-AD-SKY-TOP", "div-gpt-ad-1390595004947-2", ""],
+				 ["RC-AD-SKY-BOTTOM", "div-gpt-ad-1390595004947-1", ""],
+				 ["RC-AD-BOX-WIDGET", "div-gpt-ad-1416850836025-5", ""],
+				 ["RC-AD-BANNER-SMALL", "div-gpt-ad-1416850836025-6", ""], 
+                 ["RC-AD-MOBILE-BANNER", "div-gpt-ad-1340813990105-0", "width:320px; height:auto;"],
+				 ["RC-AD-WELCOME", "div-gpt-ad-welcome", "width:auto; height:auto;"],  
+				 ["RC-AD-LC", "div-gpt-ad-1416850836025-7", ""],
+				 ["RC-AD-TOP-BANNER-BIG", "div-gpt-ad-1448303538392-0", ""],
+				 ["RC-AD-GENESIS","div-gpt-ad-1457381686019-0", ""] 
+				 ];
+
+	//STEP THROUGH EACH ONE
+	//1. CHECK TARGET ELEMENT IF EXISTS
+	//2. IF EXISTS APPEND AD_DIV_ID WITH STYLES
+	//3. PUSH ADTAG INTO APPENDED DIV
+	for (var i=0; i<ads_arr.length; i++) { // iterate on the array
+
+		var obj = ads_arr[i];
+
+		var ad_target = obj[0];
+		var ad_id = obj[1];
+		var ad_style = obj[2];
+
+		// .each is required for when there are duplicates, one hidden, one not
+		$('.'+ad_target+'').each(function() {
+			//console.log(ad_target+' '+$(this).length+' '+$(this).is(':visible'));
+			if( $(this).length>0 && $(this).is(':visible')){
+				//console.log('got in here');
+				$(this).append("<div id='"+ad_id+"' style='"+ad_style+"'></div>"); //only append to first index (in case we have more than one)
+				googletag.cmd.push(function() { googletag.display(ad_id); });
+				console.log('appended & pushed divid="'+ad_id+'" to '+ad_target+' ');
+			}
+		});
+
+	}
+
+
+	//ZEDO POP-UNDER
+	if(siteName=='politics'){ //only politics
+		if(document.body.clientWidth>980){ //ONLY DESKTOP
+			(function() {
+				//old var zflag_cid="19897/202/1"; 
+				var zflag_nid="305"; var zflag_cid="39846/202/1"; var zflag_sid="131"; var zflag_width="1"; var zflag_height="1"; var zflag_sz="15";
+
+				var s=document.createElement('script'); s.type='text/javascript'; s.async=true; s.src='//c5.zedo.com/jsc/c5/fo.js';var x=document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);
+			})();
+		}
+	}
+
+}*/
+/******** end load google ads ***********/
+/****************************************/
+
+
+
+var category = $("#jsType").attr("data-type");
+var file_loc;
+var catType;
+var pyear_oldest;
+
+if( category == "blog" ){
+	file_loc = "blog";
+	catType = "blog";
+	pyear_oldest = 2010;
+}else if( category == "historiat" ){
+	file_loc = "historiat";
+	catType = "historiat";
+	pyear_oldest = 2013;
+}else if( category == "qacs" ){
+	file_loc = "quick_and_clear_science";
+	catType = "qacs";
+	pyear_oldest = 2016;
+}else{ //default article
+	file_loc = "articles";
+	catType = "article";
+	pyear_oldest = 2010;
+}
+
+var viewport = viewportSize.getWidth();
+var prev_viewport = viewport;
+
+var current_total = 0; 
+var pix = 0; //items counter
+var pitems_per_slide = 1; //how many items to start
+var pstart = 0; //starting index
+var pend = pitems_per_slide; //end index
+//var current_time = new Date();
+//var pyear = current_time.getFullYear();	//M.B. UPDATED 5/24/18 -- NEED ACCURATE TIME HERE OTHERWISE WILL NEVER GET CORRECT CONTENT ON LOAD MORE
+var pyear = 2016;
+var pdata = '';
+var d = '';
+var rix = 0; //remaining items count(12 item panels - last panel != 12)
+var buffer_items = [];
+var video_items = [];
+var filtered_items = [];
+var bottom_item_ids;
+var pop_item_ids;
+var day;
+var featured_entry_id;
+var startDay,startMonth,startYear,pday,pmonth,cyear;
+var MAX_FAIL_DAYS = 30;
+var fail_days_in_a_row = 0;
+var itemDate = 0;
+var first_run = 0;
+var second_run = 0;
+var removed_count = 0;
+var num_appended_count = 0;
+var first_insert_count = 0;
+
+var loadBtn = '<div class="loadMoreBtn"><span class="ajaxLeft"><img height="22" src="/asset/img/ajax-grey-sm.gif" /></span> <span class="loadMoreText">Load More</span></div>';
+
+$( document ).ready(function(){
+	
+	//START ARTICLES .READY HANDLERS
+	if (msie > -1 || !!navigator.userAgent.match(/Trident.*rv\:11\./)){ // If Internet Explorer, return version number
+		//alert(parseInt(ua.substring(msie + 5, ua.indexOf(".", msie))));
+	}
+	else  // If another browser, return 0
+	{
+		//alert('otherbrowser');
+		progressBar();
+	}
+
+	//M.B. TURNED OFF PRE-LAUNCH WILL TURN BACK ON INF. SCROLL POST LAUNCH
+	fetchArticleLocs();
+	//$('.footer-wrapper').before('<div class="nextArticle"></div>');
+	//initWaypoint();
+
+	//if any inline(align center) images present(via editor thru tiny/CMS) strip the width/height attrs as they break RWD
+	if( $(".body-photo-inline .body-photo img").length>0 ){
+		$(".body-photo-inline .body-photo img").removeAttr('width').removeAttr('height');
+	}
+	
+	//nextArticleTracker();			
+
+
+	if(global_site=='realclearpolitics' || global_site=='realcleardefense' || global_site=='realclearreligion.org' || global_site=='realclearenergy.org' || global_site=='realclearhistory' || global_site=='realclearpolicy' || global_site=='realclearworld'){
+		
+		//if hiding 3rd party ads this empty div will exist - if exists do not show lockerdome ads, else show lockerdome ads
+		// if( $(".data-no-ads").length == 0 ){
+		//    loadLockerdome();
+		// }		
+
+    }  
+
+	
+	//Sharepoints Handler - Will open pop-up to tweet Title - Sharepoint Text URL For Given Sites
+	if( $(".sharepoint-wrapper").length > 0 && (global_site == "dev.realcleardefense" || global_site == "realcleardefense")  ){						
+		$(".sharepoint-icon").click(function() {
+			var ref_url = window.location.href;
+			var ref_title = $(document).find("title").text();
+			var share_text = $(this).next(".sharepoint-text").text();
+			var twt_share_text = ref_title + ' - ' + share_text;
+			var share_url = 'http://twitter.com/share?url='+encodeURIComponent(ref_url)+'&amp;text='+ encodeURIComponent(twt_share_text) +'&amp;related='+twt_related;			
+			share_url = share_url.replace("039", "");
+			share_url = share_url.replace("'", "");
+			
+            rctools_openShareWindow('twitterwindow',share_url);
+        });
+	}
+	//////////////////////////////////////
+	//END ORIGINAL ARTICLES .READY HANDLERS
+	//////////////////////////////////////
+	
+	//////////////////////////////////////
+	//START LOADMORE HANDLERS
+	/////////////////////////////////////
+	/*$('.loadMoreBtn').click(function(){
+		//alert('here....');
+		$("ajaxLeft").css({ "display" : "block" });
+		load_more_clicked();
+		
+		//reload social tool bar(s)
+		loadSocialTools();
+	});*/
+
+	$(document).on('click', '.loadMoreBtn', function(){
+		$("ajaxLeft").css({ "display" : "block" });
+		load_more_clicked();
+		
+		//reload social tool bar(s)
+		loadSocialTools();
+	});
+	
+	//add items to exclusion array(matrix)
+	$(".item").each(function(i, ele) {
+        pop_item_ids = $(this).attr("data-id");
+		video_items.push(pop_item_ids);
+    });
+
+    pitems_per_slide = video_items.length;
+    //console.log("initial items found: "+pitems_per_slide);
+	
+	//add featured item to exclusion array
+	//featured_entry_id = $(".video-top").attr("data-entry-id");
+	//video_items.push(featured_entry_id);
+	
+	//get first posts date(first default panel) - sets starting point for load more
+	startDay = $('.item').first().attr("data-day");
+	startMonth = $('.item').first().attr("data-month");
+	startYear = $('.item').first().attr("data-year");
+	var startDateStr = startDay + '/' + startMonth  + '/' + startYear;
+	
+	pday = parseInt(startDay)+1; //current day of last default post
+	pmonth = parseInt(startMonth); //current month of last default post
+	cyear = parseInt(startYear); //current year of last default post
+	
+	//M.B. Deprecated -- Only use if you want to use current year forward - change pyear in ajax json url to cyear if using
+	/*if(siteName == 'world' || siteName == 'future' || siteName == 'health' || siteName == 'energy'){
+		pyear = cyear;
+	}*/
+	
+	if( siteName == 'history' ){
+	   pyear = cyear;
+	}
+	
+	if( catType == "qacs" ){
+		pyear = cyear;
+	}
+
+	//load dynamic video panel(12 vids/panel)
+	function load_more_clicked(){
+		var bc;
+		if( catType == "blog" ){
+			try{ 
+			
+				bc = 'Newton Blog Landing Page';
+							
+				_gaq.push(['_trackEvent', 'Newton Blog Event', 'Load More Blog Archives Btn', 'Section: '+bc+'']); 		
+			} catch(err) {} 
+		}else if( catType == "historiat" ){
+			try{ 
+			
+				bc = 'Historiat Landing Page';
+							
+				_gaq.push(['_trackEvent', 'Historiat Event', 'Load More Historiat Archives Btn', 'Section: '+bc+'']); 		
+			} catch(err) {} 
+		}else if( catType == "qacs" ){
+			try{ 
+			
+				bc = 'Quick and Clear Science Landing Page';
+							
+			_gaq.push(['_trackEvent', 'Quick and Clear Science Event', 'Load More QaCS Archives Btn', 'Section: '+bc+'']); 		
+			} catch(err) {} 
+		}else{ //default articles
+			try{ 
+			
+				bc = 'Article Landing Page';
+							
+				_gaq.push(['_trackEvent', 'Article Landing Event', 'Load More Article Archives Btn', 'Section: '+bc+'']); 		
+			} catch(err) {} 
+		}						
+				
+		if( pyear >= pyear_oldest ){ //how far back to we load archives => 1/01/16
+		//if( pyear >= pyear_oldest ){
+			
+			//not done loading current feeds items
+			//if(pix < current_total){
+			
+
+			/*if( filtered_items.length >= pitems_per_slide){
+				pstart = pix; //grab current loaded num 
+				pend = pix+pitems_per_slide;
+				
+				var display_items = filtered_items.splice(0,12);
+
+				pappendFeedData(display_items, pstart, pend, pitems_per_slide, current_total);
+				$(".ajaxLeft").css({ "display" : "none" });
+			}else{ //check previous day feed*/
+				
+
+				var temp_date = new Date(pyear+'/'+pmonth+'/'+pday);				
+        		temp_date.setDate(temp_date.getDate() - 31); // Decrements a day
+				console.log(temp_date);
+        		pyear = temp_date.getFullYear();
+        		pmonth = temp_date.getMonth() + 1;
+        		pday = temp_date.getDate();
+				
+				pix = 0;
+				pstart = 0;
+				pend = pitems_per_slide;
+				
+				//alert('above parsefeed.....');
+				
+				p_parseFeed(pstart, pend, pitems_per_slide);
+				
+			//}
+		}else{ //we know there are no more posts so we disable button
+			$(".load-more").hide();
+		}
+	};
+	/////////////////////////////////
+	//END LOADMORE .READY HANDLERS
+	/////////////////////////////////
+
+}); //end DOC READY
+
+
+//start load more videos
+function p_parseFeed(pstart, pend, pitems_per_slide){
+	//JSON CALL CACHED FOR 1 MINUTE
+  console.log('pstart: '+pstart+', pend: '+pend+', pitems_per_slide: '+pitems_per_slide+', pyear: '+pyear);
+    var cache_date = new Date(); 
+    var cache_buster = cache_date.getMonth() + '' + cache_date.getDate() + '' + cache_date.getHours() +''+cache_date.getMinutes();
+	
+	var d_loadJSON_url;
+	if( catType == "blog" ){
+		d_loadJSON_url = "//" + window.location.hostname + "/blog/"+pyear+"/"+pad(pmonth)+"/archive.json";
+	}else if( catType == "historiat" ){
+		d_loadJSON_url = "//" + window.location.hostname + "/historiat/"+pyear+"/"+pad(pmonth)+"/archive.json";
+	}else if( catType == "qacs" ){
+		d_loadJSON_url = "//" + window.location.hostname + "/quick_and_clear_science/"+pyear+"/"+pad(pmonth)+"/archive.json";
+	}else{
+		d_loadJSON_url = "//" + window.location.hostname + "/articles/"+pyear+"/"+pad(pmonth)+"/archive.json";
+	}
+	
+	console.log("Parsed URL::: " + d_loadJSON_url);
+	//var d_loadJSON_url = "http://" + window.location.hostname + "/blog/"+pyear+"/"+pad(pmonth)+"/archive.json";
+	//has to be synchronous becuase we have to wait on finish to check counts in order to load more if necessary
+	$.ajax({
+	  url: d_loadJSON_url,
+	  dataType: 'json',
+	  async:false,	  
+	  success: function(fdata){
+		pdata = fdata;
+		console.log("Feed Items: " + fdata.feed.num_posts);
+		if(fdata.feed.num_posts > 0){
+			$.each(fdata.feed.item, function(i, item) {
+
+				var thisid = item.id;
+				//alert(thisid);
+				var index = i+1;
+				//if(video_items.indexOf(thisid) == -1) {
+					filtered_items.push(item);
+					//console.log("item id "+item.id);
+				//}
+			});
+		}else{
+			console.log('no items, trying again');
+				
+		    var temp_date = new Date(pyear+'/'+pmonth+'/'+pday);
+		    temp_date.setDate(temp_date.getDate() - 31); // Decrements a day
+
+			console.log('Temp Time: ' + temp_date);
+
+		   	pyear = temp_date.getFullYear();
+		    pmonth = temp_date.getMonth() + 1;
+		    pday = temp_date.getDate();
+
+			pix = 0;
+			pstart = 0;
+			pend = pitems_per_slide;
+
+			p_parseFeed(pstart, pend, pitems_per_slide);
+
+		}
+
+			console.log("Num JSON items "+filtered_items.length);
+			console.log("Num start items "+pitems_per_slide);
+			console.log(filtered_items);
+
+			if(filtered_items.length > pitems_per_slide && (filtered_items.length - pitems_per_slide) >= 5 && first_run == 0){
+				console.log('in first run');
+				//current_total = fdata.feed.num_posts; //feed total items
+				var start_items = pitems_per_slide;
+
+				console.log("Number of items to before splice: "+filtered_items.length);
+				console.log("Number of items to remove: "+start_items);
+				console.log(filtered_items);
+
+				removed_count = filtered_items.splice(0,start_items);
+				console.log(removed_count);
+
+				console.log("Number of items after splice: "+removed_count.length);
+				console.log("Number of items after splice filtered: "+filtered_items.length);
+
+				first_insert_count = filtered_items.length;
+
+				pappendFeedData(filtered_items);
+
+				$(".ajaxLeft").css({ "display" : "none" });
+
+				first_run = 1;
+																				
+			}else if(filtered_items.length >= 5 && first_run == 1){
+
+				console.log("in second run");
+				console.log("Number of items to before splice: "+filtered_items.length);
+				console.log("Number to remove: "+first_insert_count);
+
+				if(second_run == 0){
+					removed_count = filtered_items.splice(0, first_insert_count);
+					second_run = 1;
+				}else{
+					removed_count = filtered_items.splice(0, num_appended_count);
+				}
+
+				console.log("Number removed: "+removed_count.length);
+				console.log("Number of items after splice: "+filtered_items.length);
+				num_appended_count = filtered_items.length;
+
+				
+				pappendFeedData(filtered_items);
+				$(".ajaxLeft").css({ "display" : "none" });
+
+			}else{
+
+				console.log('grabbing more items');
+				
+			    var temp_date = new Date(pyear+'/'+pmonth+'/'+pday);
+			    temp_date.setDate(temp_date.getDate() - 31); // Decrements a day
+
+				console.log("not enough items, TEMP DATE::: " + temp_date);
+				
+			   	pyear = temp_date.getFullYear();
+			    pmonth = temp_date.getMonth() + 1;
+			    pday = temp_date.getDate();
+
+				pix = 0;
+				pstart = 0;
+				pend = pitems_per_slide;
+
+				p_parseFeed(pstart, pend, pitems_per_slide);
+			}		
+	  	},
+	  	complete: function(xhr, data) {
+		  	//console.log(siteName + ' complete');
+		  	if(siteName == 'world' || siteName == 'future' || siteName == 'health' || siteName == 'energy' || siteName == 'science' || siteName == 'history'){
+		  		var vid_control = 1;
+		  	}else{
+		  		var vid_control = 0;
+		  	}
+		  	if(xhr.status != 200 && vid_control == 1) {
+		  		// Fail
+		  		console.log(siteName + ' inside if');
+		  		fail_days_in_a_row++;
+		  		if(fail_days_in_a_row < MAX_FAIL_DAYS) {
+
+		  			var temp_date = new Date(pyear+'/'+pmonth+'/'+pday);
+					temp_date.setDate(temp_date.getDate() - 31); // Decrements a day
+
+					pyear = temp_date.getFullYear();
+					pmonth = temp_date.getMonth() + 1;
+					pday = temp_date.getDate();
+
+					pix = 0;
+					pstart = 0;
+					pend = pitems_per_slide;
+
+					p_parseFeed(pstart, pend, pitems_per_slide);
+		  		} else {
+		  			//append whatever items we currently have and hide load more button
+		  			removed_count = filtered_items.splice(0, num_appended_count);
+		  			pappendFeedData(filtered_items);
+		  			num_appended_count = filtered_items.length;
+		  			$(".loadMoreBtn").css({ "display" : "none" });	
+		  		}
+		  	}
+	  	}
+	});
+}
+
+
+function pappendFeedData(display_items){	
+	var tracker = 1;
+	
+	display_items.sort(function(a,b){ 
+	  // Turn your strings into dates, and then subtract them
+	  // to get a value that is either negative, positive, or zero.
+	  return new Date(a.date) - new Date(b.date);
+	});
+	
+	$.each(display_items, function(i, item) {
+
+		//console.log(item);
+		
+		var months = Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+		var days =   Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
+
+		var itemID = item.id;
+		var itemImg = item.image;
+		var itemLink = item.link;
+		var itemExc = item.excerpt;
+		var itemByline = item.byline;
+		var author = item.author;
+		var postDate = item.postDate;
+		var itemTitle = item.title.replace(/&acute;/g, "&#039;");
+
+		var date = new Date(item.date);
+		
+		var dhtml = "";
+
+		/*if(itemDate.length == 0){
+			itemDate = item.date;
+		}*/
+		//console.log("Run: "+tracker+ " itemDate var: "+ itemDate+ " JSON date: "+item.date);
+
+		/*if(itemDate != item.date){
+			dhtml += '<div style="color:#000; font-size:1.5em; font-weight:bold; margin:0px; padding:10px 0px 4px 0px;">'+days[date.getDay()]+ ', ' + months[date.getMonth()] + ' ' + date.getDate()+'</div>';
+			itemDate = item.date;
+		}*/
+		
+		dhtml += '<div class="post item" data-id="'+itemID+'" data-year="" data-month="" data-day="">';
+			dhtml += '<div class="section-social" data-feed-description="'+itemTitle+'" data-feed-caption="'+itemByline+'">';
+				dhtml += '<div class="socialBar" data-style="short" data-dialog="share" data-src-title="'+itemTitle+'" data-src-url="'+itemLink+'"><div class="left toolset"></div></div>';
+				dhtml += '<div class="socialBar-clicks"></div>';
+				dhtml += '<div class="socialBar-divide"></div>';
+				dhtml += '<div class="socialBar-shares"></div>';
+			dhtml += '</div>';
+	
+			dhtml += '<h2 id="article-title"><a href="'+itemLink+'">'+itemTitle+'</a></h2>';
+			dhtml += '<p class="author">';
+				dhtml += '<strong>'+author+'</strong> - '+ postDate;
+			dhtml += '</p>';
+			
+			dhtml += '<div id="article_body" class="article_body">';
+			
+				/*dhtml += '<div class="image" style="'.$ae_pic_container_styles.'">';
+					dhtml += '<img src="'+itemImg+'" width="100%" />';      
+				dhtml += '</div>';*/
+				
+				//excerpt -- 4 paras
+				dhtml += itemExc;
+				
+				dhtml += '<div class="big_more"><a href="'+itemLink+'">Read Full Story <span>»<span></a></div>';
+			
+			dhtml += '</div><!-- article_body -->';
+		
+
+		
+			/*dhtml += "<a href='"+itemLink+"'>" +
+				'<div class="vt-bg-item"><img src="'+itemImg+'" /></div>' +
+				'<span class="vital-title"><p>'+itemTitle+'</p></span>' +
+				'<img class="vs-logo" src="/asset/img/vs-logo.png">' +
+			"</a>";*/
+		dhtml += '</div> ';
+
+				
+
+		//console.log(dhtml);
+		
+		$('.more-posts').append(dhtml);	
+		//$(".alpha .last").after(dhtml);	
+		$('.ajaxRight').hide();
+		tracker++; //increase item counter					
+	});					
+}
+//end load more
+
+//helper function to ensure day of month remains 2 digit
+function pad(n) {
+    return (n < 10) ? ("0" + parseInt(n)) : n;
+}
+
+
+//create object with innitial setings
+var load_more = {};
+load_more.innitial_items_count = 0;
+load_more.first_load = true;
+load_more.removed_innitial_items = false;
+load_more.date = new Date;
+load_more.articles;
+load_more.limit_to_show = 10;
+load_more.limit_load_errors = 12;
+load_more.error_count = 0;
+load_more.folder = 'articles';
+
+//count how many articles there are already in the page
+$(document).ready(function(){
+	
+	load_more.get_innitial_items_count();
+
+	// Loader for Tim Outstream Article Video to lazy load it. Function at the bottom of file
+    //Removed on Augost 9
+    //EM
+	/*if(SITE_INFO['name'] == 'politics' && $('body').hasClass('article') && !$('body').hasClass('article-landing') && !$('body').hasClass('rcor') ){
+        triggerTimOutstreamArticleVideo();
+    }*/
+});
+
+//on click we call the append_items function
+$(document).on('click', '#load_more', function(){
+	
+	//reset error count before loading more
+	load_more.error_count = 0;
+
+	//load more into DOM
+	load_more.append_items();
+	
+});
+
+load_more.get_innitial_items_count = function(){
+	$('.alpha .item').each(function(){
+		load_more.innitial_items_count = load_more.innitial_items_count + 1;
+	});
+}
+
+//checks if we have enough items, if we don't it calls get_data to get items
+//get_data calls this function as soon as it has enough items
+load_more.append_items = function(){
+	//check how many 404 of json we got
+	//if we got too many it checks how many items we have it will either grab the limit_to_show limit and display it
+	//or just display whatever the array has, empty the array, hide the button
+	if(this.error_count > this.limit_load_errors){
+		if(typeof this.articles != 'undefined' && this.articles.length > 0){
+			if(this.articles.length > this.limit_to_show){
+				var items = this.articles.slice(0, this.limit_to_show);
+				pappendFeedData(items);
+				this.articles = this.articles.slice(this.limit_to_show);
+			}else{
+				pappendFeedData(this.articles);
+				this.articles = [];
+				$('#load_more_wrapper').hide();
+			}
+		}else{
+			this.articles = [];
+			$('#load_more_wrapper').hide();
+		}
+	}else{
+		//else we call get_data if we don't have enough articles
+		$('.ajaxRight').show();
+		if(typeof this.articles == 'undefined' || this.articles.length < this.limit_to_show){
+			this.get_data();
+		}else{
+			//once we have enough data we push however many limit_to_show is set to
+			//and remove the pushed articles from the articles array
+			var items = this.articles.slice(0, this.limit_to_show);
+			pappendFeedData(items);
+			this.articles = this.articles.slice(this.limit_to_show);
+		}
+	}
+}
+
+load_more.get_data = function(){
+
+	if(this.removed_innitial_items == false && this.innitial_items_count == 0){
+		this.get_innitial_items_count();
+	}
+
+	//on first data load we just grab whatever year and month we are on
+	if(this.first_load){
+		this.year = this.date.getFullYear();
+		this.month = this.date.getMonth()+1;
+		
+		var cache_butst = new Date().getTime();
+		var url = window.location.protocol+"//"+window.location.hostname+"/"+this.folder+"/"+this.year+"/"+this.pad(this.month)+"/archive.json?v="+cache_butst;
+	}else{
+	//else we decrement by one month and grab that json file
+		this.date.setMonth(this.date.getMonth()-1);
+
+		this.year = this.date.getFullYear();
+		this.month = this.date.getMonth()+1;
+
+		var cache_butst = new Date().getTime();
+		var url = window.location.protocol+"//"+window.location.hostname+"/"+this.folder+"/"+this.year+"/"+this.pad(this.month)+"/archive.json?v="+cache_butst;
+	}
+
+	$.ajax({
+		url: url,
+		dataType: 'json',
+	  	success:function(data){
+	  		//if the json file has data
+	  		if(parseInt(data.feed.num_posts) > 0){
+	  			//on first load the array is undefined so we just assign the json feed and it becomes an array
+	  			if(typeof load_more.articles == 'undefined'){
+	  				load_more.articles = data.feed.item;
+	  			}else{
+	  				//else we push one by one to the array to keep the keeps in the array good
+	  				for(var i in data.feed.item){
+	  					load_more.articles.push(data.feed.item[i]);
+	  				}	  				
+	  			}
+	  		}
+	  	},
+	  	error:function(){
+	  		//on json errors we add to the error tracker
+	  		load_more.error_count = load_more.error_count + 1;
+	  	},
+	  	complete:function(){
+	  		//if we have the amount to remove and amount to display
+	  		//or if we have enough and we have already removed on screen items
+	  		//or if we got too many 404s on json file look ups
+	  		if( (load_more.removed_innitial_items == false && typeof load_more.articles != 'undefined' && parseInt(load_more.articles.length) >= (load_more.innitial_items_count + load_more.limit_to_show) )
+	  			|| (load_more.removed_innitial_items == true && typeof load_more.articles != 'undefined' && parseInt(load_more.articles.length) >= load_more.limit_to_show) 
+	  			|| load_more.error_count > load_more.limit_load_errors ){
+	  			load_more.first_load = false;
+	  			//on first load we remove however many there on the screen from the array
+	  			if(!load_more.removed_innitial_items){
+	  				load_more.removed_innitial_items = true;
+	  				load_more.articles = load_more.articles.slice(load_more.innitial_items_count);
+	  			}
+	  			//we have enough so we call the append_items function
+	  			load_more.append_items();
+	  		}else{
+
+	  		//else we run the get_data once again
+	  			load_more.first_load = false;
+	  			load_more.get_data();
+	  		}
+	  	}
+	});
+}
+
+//some ads bring their own pad function
+//so I added this to the object
+load_more.pad = function(n){
+	return (n < 10) ? ("0" + parseInt(n)) : n;
+}
+
+/*Tracks adds ga event to track up next link */
+
+$(document).ready(function(){
+
+    $('.contentwrapper').on('click', '.top-up-next-link', function(e){
+        
+        var data = {
+            'ge_action' : 'Click',
+            'ge_category' : 'Article Pages Event',
+            'ge_label' : 'Top Up Next Link',
+          	'ge_noninteraction' : false
+        };
+
+        send_ga_event(data);
+
+        window.setTimeout('document.location = "' + e.attr('href') + '"', 100);
+
+        return false;
+
+    });
+
+});
+
+/**
+ * Lazy loads the Tim Outstream video into an article. 
+ * Loads video when the user scrolls by the location of containerTarget
+ */
+function triggerTimOutstreamArticleVideo()
+{
+    var containerTarget = '.article-body-text > p:nth-child(16)';
+
+    if($(containerTarget).length == 0){
+        return;
+    }
+
+    $('<div id="tim_outstream_video" class="tim-outstream-lazyjs"></div>').insertAfter( containerTarget );
+
+    var intervalTimOutstream = setInterval(function(){
+
+        var target = '.tim-outstream-lazyjs';
+
+        if($(target).length > 0 && isVisibleOnScreen(document.getElementById("tim_outstream_video")) ){
+
+            var script      = document.createElement("script");
+            script.type     = "text/javascript";
+            script.src      = '//stg.truvidplayer.com/index.php?sub_user_id=648&widget_id=2949&playlist_id=2125&m=a&cb=' + (Math.random() * 10000000000000000);
+            $(script).insertAfter(target);
+
+            clearInterval(intervalTimOutstream);
+
+        }
+
+    }, 250);
+}
+
+/* Content Insights on RCP Article Pages */
+
+if(global_site == 'realclearpolitics') {
+
+	// Load Content Insights library on doc ready.
+	// Global variable "_ain" should be available by then.
+	$(function() {
+		
+		if(typeof _ain !== 'undefined') { // Make sure config exists on page
+
+			// If "evaf" cookie exists, that means the user is a paid ad-free subscriber
+			// Else, if "rcmg_guid" cookie exists, they are registered user
+			if(readCookie('evaf')) {
+				_ain['reader_type'] = "subscribed";
+			} else if(readCookie('rcmg_guid')) {
+				_ain['reader_type'] = "registered";
+			}
+
+			(function (d, s) {
+				var sf = d.createElement(s);
+				sf.type = 'text/javascript';
+				sf.async = true;
+				sf.src = (('https:' == d.location.protocol)
+				? 'https://d7d3cf2e81d293050033-3dfc0615b0fd7b49143049256703bfce.ssl.cf1.rackcdn.com'
+				: 'http://t.contentinsights.com') + '/stf.js';
+				var t = d.getElementsByTagName(s)[0];
+				t.parentNode.insertBefore(sf, t);
+			})(document, 'script');
+		}
+	});
+}
+
+/* Fullscreen Image Modal */
+$(function() {
+
+	if($('img.rc_fullscreen_click').length) {
+
+		$('img.rc_fullscreen_click').click(function() {
+
+		var close_modal = function() {
+			$('.rc_fullscreen_modal').remove();
+		};
+
+		close_modal();
+
+		var img = $(this).attr('src').replace(/_[1-9]_/, '');
+
+		var html = "";
+
+		html += "<div class='rc_fullscreen_modal'>";
+			html += "<div class='image' style='background-image: url("+img+")'></div>";
+			html += "<div class='close'>X</div>";
+		html += "</div>";
+
+		$('body').append(html);
+
+		$('.rc_fullscreen_modal').click(close_modal);
+		$('.rc_fullscreen_modal .image .close').click(close_modal);
+
+		});
+	}
+
+});

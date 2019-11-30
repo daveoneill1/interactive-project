@@ -1,0 +1,103 @@
+var adUnits = [{
+    code: 'div-gpt-ad-1390595004947-7',
+    mediaTypes: {
+        banner: {
+            sizes: [
+                [728, 90]
+            ]
+        }
+    },
+    bids: [{
+        bidder: 'appnexus',
+        params: {
+            placementId: "12143773"
+        }
+    }]
+}, {
+    code: 'div-gpt-ad-1390595004947-6',
+    mediaTypes: {
+        banner: {
+            sizes: [
+                [728, 90]
+            ]
+        }
+    },
+    bids: [{
+        bidder: 'appnexus',
+        params: {
+            placementId: "12143774"
+        }
+    }]
+}, {
+    code: 'div-gpt-ad-1390595004947-5',
+    mediaTypes: {
+        banner: {
+            sizes: [
+                [300, 250]
+            ]
+        }
+    },
+    bids: [{
+        bidder: 'appnexus',
+        params: {
+            placementId: "12143775"
+        }
+    }]
+}, {
+    code: 'div-gpt-ad-1390595004947-4',
+    mediaTypes: {
+        banner: {
+            sizes: [
+                [300, 250]
+            ]
+        }
+    },
+    bids: [{
+        bidder: 'appnexus',
+        params: {
+            placementId: "12143776"
+        }
+    }]
+}, {
+    code: 'div-gpt-ad-1390595004947-3',
+    mediaTypes: {
+        banner: {
+            sizes: [
+                [300, 250]
+            ]
+        }
+    },
+    bids: [{
+        bidder: 'appnexus',
+        params: {
+            placementId: "12143777"
+        }
+    }]
+},
+ {
+    code: 'div-gpt-ad-1416850836025-4',
+    mediaTypes: {
+        banner: {
+            sizes: [
+                [300, 600]
+            ]
+        }
+    },
+    bids: [{
+        bidder: 'appnexus',
+        params: {
+            placementId: "12143778"
+        }
+    }]
+}];
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+googletag.cmd.push(function() {
+    googletag.pubads().disableInitialLoad();
+});
+pbjs.que.push(function() {
+    pbjs.addAdUnits(adUnits);
+    pbjs.setConfig({
+        priceGranularity: "high"
+    });
+});
