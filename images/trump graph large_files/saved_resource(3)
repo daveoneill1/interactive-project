@@ -1,9 +1,0 @@
-Adform=window.Adform||{};
-Adform.host="https://track.adform.net";
-Adform.shost="https://s1.adform.net";
-Adform.scriptBase=Adform.shost+"/banners/scripts/";
-Adform.cache="620";
-Adform.ADFBannerData={"URL":"https://track.adform.net/adfserve/?bn=32717002;rtbpid=3;rtbinv=${INV_SRC};rtbwp=0.012547-5i9Jb2FFaivj6stLXjsrwrERwSPx3aBj0;rtbr=3438235855590717749;rtbcid=${ENC_CID};rtbtpc=${ENC_TPC};rtburl=https%3A%2F%2Fwww.realclearpolitics.com%2Farticles%2F2019%2F09%2F11%2Fnumbers_show_how_trumps_tweets_drive_the_news_cycle_141217.html;rtbcat=${IAB_CATS};rtbdp=${DATA_PROV};rtbdt=${DATA_TYPE};rtbdc=${DATA_FEE_ENC};rtbplc=${ENC_PLC};rtbrmc=${ENC_RMC};rtbdata=cfilJZK-4j0DAIaVT-LEhGqyAS0yJE6sNYzHiT-IZFzJJnDngXTfGOgolaDZWbtSlKK0XbSia0OvY8vd6xmW7qJEHwO22zTWlSrzSuSq8uwL7P36Pgpi4vDxpz_d_RjSHxeOVpzT4H6IISYx3WW4BEZ95j2VGo6HWBGkoB2l14nbPsg2Yx-RTJf_G_Hk5-WbtE-LOA7WcX4g_rFNC9zwzuKHTjFTta2MBf3IZC4acJpFrwCvBPGDQ2niATxIbJyDbVwi61V9SWml4WfEPkV-IGrNiKDjiqCUrHno_exa8s8VsSNxHmbBlgFgoMurAGqVUohS8sk_V_uHKemKIpBg92Tz-QAVsUC2pJXRHN-QynopExMO31-L2WT0lQkXAT8x0;rtbtest=0","CREFURL":"https%3a%2f%2fwww.realclearpolitics.com%2farticles%2f2019%2f09%2f11%2fnumbers_show_how_trumps_tweets_drive_the_news_cycle_141217.html","BN":32717002,"STUBFILE":{"PATH":"/adform/IFrameManager.html"}};
-if(!Adform.ADFBannerParams)Adform.ADFBannerParams=[];
-Adform.ADFBannerParams.push(Adform.ADFBannerData);
-typeof Adform.ADFUtilInstance=="undefined"?document.write('<scr'+'ipt type="text/javascript" src="https://s1.adform.net/stoat/620/s1.adform.net/bootstrap.js"></scr'+'ipt>'):new Adform.ADFBanner();

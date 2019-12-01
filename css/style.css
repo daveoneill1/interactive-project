@@ -50,10 +50,10 @@
 /*--Jumbotron--*/
 
 
-
 .jumbotron {
     background: transparent;
     padding-top: 100px;
+
     
    
 }
@@ -71,10 +71,44 @@
 .summary-text {
     color: black;
     font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    letter-spacing: 2px;
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 1px;
     
+
+}
+
+
+
+.callout-container {
+
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/*--Background Particles and Callout--*/
+
+#particles-js {
+    width: 100%;
+    height: 800px;
+    background-color: white;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+   
+}
+
+.callout-text {
+    color: black;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%,-50%);
+    max-width: 900px;
+    padding: 2em 3em;
 
 }
 
@@ -107,9 +141,32 @@ padding-bottom: 20px;
 
 
 
+.card{
+    border: none;
+}
 
 
+.card-img-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1.25rem;
+    font-family: "montserrat", serif;
+   
+    
+    
+}
 
+.line-break {
+
+    border-top-color:#f1eeee;
+    border-top-style: solid;
+    border-top-width: .5px;
+    padding-top: 50px;
+
+}
 
 /*--Cards 3 Column--*/
 
@@ -121,7 +178,7 @@ padding-bottom: 20px;
 
 .card-deck {
 
-    padding-top:50px;
+   
 padding-bottom: 50px;
 margin-left: 20px;
 margin-right: 20px;
@@ -132,24 +189,7 @@ margin-right: 20px;
 
 
 
-/*--Cards 2 Column--*/
 
-.large-cards {
-
-    padding-top:50px;
-padding-bottom: 50px;
-}
-
-
-.large-card-img-top {
-    max-height: 260px;
-}
-
-@media screen and (max-width: 600px) {
-    .jumbotron-headline {
-      font-size: 32px;
-    }
-  }
 
     /*--Graph Style--*/
 
@@ -229,8 +269,10 @@ padding-bottom: 50px;
 
  .date{
      font-size: 14px;
-     color: #444;
+     color:#0a1612;
      padding-bottom: 20px;
+     font-weight: 600;
+     font-family: "Montserrat";
  }
 
     ul#menu li {
@@ -364,10 +406,71 @@ padding-bottom: 50px;
     top: 9px;
 }
 
+/*--Contact Us--*/
+
+.container-details {
+    
+    color: black;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%,-50%);
+    max-width: 900px;
+    padding: 2em 3em;
+
+
+}
+
+
+.btn-orange-contact {
+    color: #FFFFFF;
+    background-color: #f7ce3e;
+    border-radius: 10px;
+    
+        font-weight:600;
+        font-size: .75rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        width: 140px;
+        margin-top: 20px;
+        margin-bottom: 50px;
+    
+
+}
+
+
+
+
+
+
+
+.contact-heading {
+    font-weight: bold;
+    color:black;
+    letter-spacing: 4px;
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
+
+
+
+
+.center-form {
+    padding-top: 10px;
+    margin: 0 auto;
+    max-width: 75%;
+}
+
+button[type="submit"] {
+    margin-top: 25px;
+    margin-bottom: 20px;
+    
+   
+}
 
     
  
-  /*--FOOTER--*/
+  /*--Footer--*/
 
 .page-footer {
     background-color:rgb(29, 43, 54);
@@ -419,7 +522,9 @@ padding-bottom: 50px;
 
 
     hr {
-        border-bottom: .5px solid rgb(57, 81, 99);
+        border-bottom: .25px solid #e9ecef;
+        padding-top: 15px;
+        padding-bottom: 15px;
        
     }
 
@@ -430,23 +535,4 @@ padding-bottom: 50px;
     }
 
 
-    #particles-js {
-        width: 100%;
-        height: 800px;
-        background-color: white;
-        background-size: cover;
-        background-position: 50% 50%;
-        background-repeat: no-repeat;
-       
-    }
-    
-    .callout-text {
-        color: black;
-        position: absolute;
-        top: 50%;
-        right: 50%;
-        transform: translate(50%,-50%);
-        max-width: 900px;
-        padding: 2em 3em;
-
-    }
+   

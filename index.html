@@ -90,7 +90,8 @@
             </div>
 
 
-            <p class="summary-text dataviz-summary text-center ">This weeks featured tone timeline displays the average emotional
+            <p class="summary-text dataviz-summary text-center ">This weeks featured tone timeline displays the average
+                emotional
                 "tone" (from extremely
                 negative to extremely positive) of all coverage monitored by day/hour over the past 3 months.
                 It offers a quick visual gauge of the emotional tenor and kind of for each leader.</p>
@@ -128,7 +129,7 @@
 
 
 
-    <!--Blog Card Section 1-->
+    <!--Map 1-->
 
     <div class="container-fluid dataviz-container">
 
@@ -138,10 +139,9 @@
             <h2 class="dataviz-title text-uppercase text-center">Mapping geographic focus of news major outlets</h2>
 
 
-            <p class="summary-text dataviz-summary text-center">This weeks featured tone timeline displays the average emotional
-                "tone" (from extremely
-                negative to extremely positive) of all coverage monitored by day/hour over the past 3 months.
-                It offers a quick visual gauge of the emotional tenor and kind of for each leader.</p>
+            <p class="summary-text dataviz-summary text-center">When mapping the locations of the world’s news outlets,
+                the difference between geographic focus and geographic location offers
+                a powerful lesson in how we see the world and how different data gives us different perspectives.</p>
 
         </div>
 
@@ -152,9 +152,7 @@
 
     <div class="container-fluid header-holder">
 
-        <!--   <h3 class="graph-title">RTE News Coverage</h3>
-       
-               <hr> -->
+    
 
         <div id="map"></div>
 
@@ -180,7 +178,7 @@
                         <ul id="menu">
                             <li><a class="fa fa-twitter" title="" target="_blank" href="#"></a></li>
                             <li><a class="fa fa-facebook" title="" target="_blank" href="#"></a></li>
-                            <li><a class="fa fa-envelope" title="" target="_blank" href="#"></a></li>
+                            <li><a class="fa fa-linkedin" title="" target="_blank" href="#"></a></li>
 
                         </ul>
 
@@ -192,7 +190,7 @@
 
 
 
-                    <p>Click on the locations above to highlight the number of times that location has been mentioned.
+                    <p class="summary-text"></p>Click on the locations above to highlight the number of times that location has been mentioned.
                         This
                         dataset is extracted using the GDELT GEO 2.0 API. The results are stored locally in geojson
                         format and applied
@@ -201,6 +199,12 @@
                         specified period of time.
                     </p>
 
+                    <div class="button-blog text-center ">
+       
+                            <a href="/blogs/blog-map-rte-news-coverage.html" class="btn btn-orange-contact" role="button">Read More</a>
+                    
+                        </div>
+
                 </div>
             </div>
         </div>
@@ -208,12 +212,98 @@
 
 
 
+    <!--Line Graph-->
+
+    <div class="container-fluid dataviz-container">
+
+
+        <div class="dataviz-heading">
+
+            <h2 class="dataviz-title text-uppercase text-center">which Topics are news outlets focused on today?</h2>
+
+
+            <p class="summary-text dataviz-summary text-center">The power of GDELT helps us monitor global online news
+                coverage for any keyword. We can highlight
+                which keywords are trending up and down. In the example below we see a steady decline in the mentions of
+                'Yemen'. In previous analysis we were able to highlight an
+                increase globally in coverage including the keyword 'recession'.
+            </p>
+        </div>
+
+
+        <!--Map Container-->
+
+        <div class="container-fluid header-holder">
+
+            <canvas id="myChart" width="922" height="285"></canvas>
+
+        </div>
+
+
+    </div>
+
+
+    <!--Social Icons-->
+
+    <section id="post-content ">
+
+        <div class="container post-position">
+
+            <div class="row">
+
+                <div class=" blog-col col-md-10.offset-md-1">
+
+
+
+                    <div class="social text-center">
+                        <ul id="menu">
+                            <li><a class="fa fa-twitter" title="" target="_blank" href="#"></a></li>
+                            <li><a class="fa fa-facebook" title="" target="_blank" href="#"></a></li>
+                            <li><a class="fa fa-linkedin" title="" target="_blank" href="#"></a></li>
+
+                        </ul>
+
+
+                    </div>
+
+
+                    <p class="summary-text">This query can be applied to any online news domain. In fact GDELT can be queried using keyworks,
+                        themes and much more.
+                        Over the next week we will be creating coverage maps for a number of online news domains for the
+                        same
+                        time frame to generate further insights into global news coverage.
+                    </p>
+
+                    <div class="button-blog text-center ">
+       
+                            <a href="/blogs/blog-media-talking-less-about-yemen.html" class="btn btn-orange-contact" role="button">Read More</a>
+                    
+                        </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- Blog Cards Section-->
+
+    <div class="dataviz-heading line-break">
+
+        <h2 class="dataviz-title text-uppercase text-center">More Stories</h2>
+
+       
+
+    </div>
+
+
     <div class="card-deck">
         <div class="card">
             <img class="card-img-top" src="/images/yemen 2yr graph.png" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">The Media is Talking Less About Yemen</h5>
-                <a href="/blog-media-talking-less-about-yemen.html" class="stretched-link"></a>
+                <a href="/blogs/blog-media-talking-less-about-yemen.html" class="stretched-link"></a>
                 <p class="card-text">Media coverage of Yemen has steadily decreased despite the fact that
                     nearly 80%
                     of
@@ -231,7 +321,7 @@
             <img class="card-img-top" src="/images/climate protests card image.png" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">Mapping RTE News Coverage</h5>
-                <a href="/blog-map-rte-news-coverage.html" class="stretched-link"></a>
+                <a href="/blogs/blog-map-rte-news-coverage.html" class="stretched-link"></a>
 
                 <p class="card-text">This map visualizes the locations mentioned most frequently in RTE's
                     reporting,
@@ -247,55 +337,15 @@
             <!--Card 3-->
         </div>
         <div class="card">
-            <img class="card-img-top" src="images/twitter image news.jpeg" alt="Card image cap">
+            <img class="card-img-top" src="images/fine gael wordcloud.png" alt="Card image cap">
             <div class="card-body">
-                <h5 class="card-title">The Top Most Newsworthy Titter Accounts of 2019</h5>
-                <a href="/blog-map-rte-news-coverage.html" class="stretched-link"></a>
-                <p class="card-text">Using the master archive of social media outlinks found in worldwide
-                    news
-                    coverage
-                    monitored by GDELT in 2019,
-                    we compiled a
-                    ranked list of distinct Twitter accounts whose posts were linked to by news coverage
-                    over that
-                    time
-                    period. </p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Interactive Barchart (in progress)</small>
-            </div>
-        </div>
-    </div>
-
-    <!--Blog Card Section 2-->
-
-    <div class="card-deck large-cards">
-        <div class="card">
-            <img class=" large-card-img-top" src="/images/trump graph.png" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title"> Numbers Show How Trump's Tweets Drive The News Cycle</h5>
-                <a href="/blog-trump-tweets-drive-news.html" class="stretched-link"></a>
-                <p class="card-text"></p>
-                This new dataset has incredible applications in misinformation, disinformation,
-                "fake news," digital falsehood and foreign influence research, providing a glimpse at the
-                social
-                media that has crossed over into mainstream journalism.
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Content</small>
-            </div>
-        </div>
-        <div class="card">
-            <img class="large-card-img-top" src="/images/Untitled design (4).png" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Top 100 Names Assocaited With Fine Gael </h5>
-                <a href="/blog-top100-names-associated-fine-gael.html" class="stretched-link"></a>
+                <h5 class="card-title">The Top 100 Names associated with Fine Gael</h5>
+                <a href="/blogs/blog-top100-names-associated-fine-gael.html" class="stretched-link"></a>
                 <p class="card-text">This Wordcloud is a representation of the top 100 names most associated
-                    with
-                    Fine
-                    Gael in 2019. The data is taken from the Google Knowledge Cloud which
-                    analyses thousands of news articles from Ireland during that period.
-                </p>
+                        with
+                        Fine
+                        Gael in 2019. The data is taken from the Google Knowledge Cloud which
+                        analyses thousands of news articles from Ireland during that period. </p>
             </div>
             <div class="card-footer">
                 <small class="text-muted">Content</small>
@@ -303,57 +353,9 @@
         </div>
     </div>
 
+    
 
-
-    <div class="card-deck">
-        <div class="card">
-            <img class="card-img-top" src="/images/yemen 2yr graph.png" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">The Media Is Talking Less About Yemen</h5>
-                <p class="card-text">Media coverage of Yemen has steadily decreased despite the fact that
-                    nearly 80%
-                    of
-                    the population
-                    need assistance according to the UN.
-                </p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
-            </div>
-        </div>
-        <div class="card">
-            <img class="card-img-top" src="/images/climate protests card image.png" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Mapping Global Climate Protests</h5>
-                <p class="card-text">Using the Geo 2.0 Api it is possible to map the geographic locations
-                    around the
-                    world close to where
-                    specific keywords are mentioned. In this example the query includes 'Climate Change' and
-                    'Protests'
-                    or 'Strikes'.
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
-            </div>
-        </div>
-        <div class="card">
-            <img class="card-img-top" src="/images/trump.jpg" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Numbers Show How Trump's Tweets Drive The News Cycle</h5>
-                <p class="card-text">This new dataset has incredible applications in misinformation,
-                    disinformation,
-                    "fake news," digital falsehood and foreign influence research, providing a glimpse at
-                    the social
-                    media that has crossed over into mainstream journalism. </p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
-            </div>
-        </div>
-    </div>
-
-
-    <!--FOOTER SECTION-->
+    <!--Footer-->
 
     <footer class="page-footer">
 
@@ -373,22 +375,20 @@
 
                 <div class="col-sm-3">
 
-                    <h5 class="footer-heading text-uppercase">Contact
-                    </h5>
+                   
+                    <a href="/contact.html"><h5 class="footer-heading text-uppercase">Contact</h5></a>
 
                 </div>
 
                 <div class="col-sm-3">
 
-                    <h5 class="footer-heading text-uppercase">Learn
-                    </h5>
+                        <a href="https://www.gdeltproject.org/"><h5 class="footer-heading text-uppercase">Learn</h5></a>
 
                 </div>
 
                 <div class="col-sm-3">
 
-                    <h5 class="footer-heading text-uppercase">Google Big Query
-                    </h5>
+                        <a href="https://cloud.google.com/bigquery/what-is-bigquery"><h5 class="footer-heading text-uppercase">Big Query</h5></a>
 
                 </div>
 
@@ -403,6 +403,7 @@
 
 
 
+    <!--Scripts-->
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -430,23 +431,8 @@
 
 
 
-
-
     <script src="/particles.js"></script>
     <script src="/appHome.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </body>

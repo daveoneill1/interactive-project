@@ -41,7 +41,7 @@ $(document).ready(function () {
             data: {
                 labels: datesArray,//to show all the numbers we need to have the same amount of matching labels, in this case its the dates*****
                 datasets: [{
-                    label: 'Coverage Volume Intensity',
+                    label: 'Coverage Volume Intensity - Keyword Yemen',
                     borderColor: 'rgb(124,181,236)',
 
 
