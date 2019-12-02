@@ -1,3 +1,92 @@
+// check jquery loaded // 
+
+function updateNews(dataName) {
+
+    //Set the JSON file to load Depending on what we pass from button click, i.e. data1,data2
+    let url = ""
+    let label = ""
+    if(dataName == 'data1'){
+        url = "/data/boris-johnson-tone.json"
+        label = "Boris Johnson Tone Sept to Nov (Days)"
+    }
+    else if(dataName == 'data2'){
+        url = "/data/jeremy-corybn-tone.json"
+        label = "Jeremy Corbyn Tone Sept to Nov (Days)"
+    }
+    else if(dataName == 'data3'){
+        url = "/data/leo-varadkar-tone.json"
+        label = "Leo Varadkar Tone Sept to Nov (Days)"
+    }
+
+    $.ajax({
+        url: url,
+
+        // if successful bind the data to the done method
+        
+      }).done(function(data) {
+
+       
+        var ctx = document.getElementById('leoChart');
+        // bind data to myJSON variable // 
+
+        var myJSON = data.timeline[0].data
+
+        var valuesArray = []
+        var datesArray = []
+        $.each(myJSON, function(count,item) {
+
+            var itemvalue = item.value
+            valuesArray.push(itemvalue)
+            datesArray.push(count) 
+        })
+
+    console.log(valuesArray)
+        console.log(datesArray)
+
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'line',
+    
+        // The data for our dataset
+        data: {
+            labels: datesArray,//to show all the numbers we need to have the same amount of matching labels, in this case its the dates
+            datasets: [{
+                label: label,
+                borderColor: '#00acee',
+                data: valuesArray
+            }]
+        },
+        // Configuration options go here
+        options:  {
+            scales: {
+                xAxes: [
+                    {
+                        gridLines: {
+                            drawOnChartArea: false    
+                        },
+
+                        ticks: {
+                            display: false
+                        }
+                    
+                    }
+                    
+
+                    
+                ]
+            }
+        }
+    })
+
+        })
+
+}
+
+updateNews('data1') // Call the function straight away so that it populates with the first dataset
+
+
+
+
 // Yemen Line Chart // 
 // check jquery loaded // 
 
@@ -43,6 +132,7 @@ $(document).ready(function () {
                 datasets: [{
                     label: 'Coverage Volume Intensity - Keyword Yemen',
                     borderColor: 'rgb(124,181,236)',
+                    
 
 
                     data: valuesArray
@@ -60,7 +150,8 @@ $(document).ready(function () {
 
                             ticks: {
                                 display: false
-                            }
+                            },
+
                         
                         }
                         
@@ -153,101 +244,3 @@ $(document).ready(function () {
 
 
     }
-
-
-    
-// Global Leaders Sentiment // 
-
- // check jquery loaded // 
-
- $(document).ready(function () {
-
-
-    // fire ajax method, call url // 
-
-    $.ajax({
-        url: "/data/leo-varadkar-tone.json",
-
-        // if successful bind the data to the done method
-    }).done(function (data) {
-
-
-        var ctx = document.getElementById('leoChart');
-        // bind data to myJSON variable // 
-
-        var myJSON = data.timeline[0].data
-
-        var valuesArray = [] // creating a array for the number values
-        var datesArray = [] // creating an array for the dates
-
-        $.each(myJSON, function (count, item) {
-
-            var itemvalue = item.value
-            valuesArray.push(itemvalue)
-
-            var date = item.date
-            datesArray.push(date) //push the dates into the date array
-        })
-
-        console.log(valuesArray)
-
-
-        var chart = new Chart(ctx, {
-            // The type of chart we want to create
-            type: 'line',
-
-            // The data for our dataset
-            data: {
-                labels: datesArray,//to show all the numbers we need to have the same amount of matching labels, in this case its the dates
-                datasets: [{
-                    label: 'Average Tone ',
-                    borderColor: '#00B6F1',
-                    fill: true,
-                    backgroundColor: '#c5c1c0',
-
-
-                    data: valuesArray
-                }]
-            },
-            // Configuration options go here
-            // hide x axis labels  / hide grid lines 
-            options: {
-
-                animation: {
-                    easing: "easeInOutBack"
-                },
-
-                scales: {
-                    xAxes: [
-                        {
-                            gridLines: {
-                                drawOnChartArea: false
-                            },
-
-                            ticks: {
-                                display: false
-                            }
-
-
-                        }
-
-
-                    ]
-                }
-
-
-
-
-            }
-        })
-
-    })
-
-
-
-
-
-
-})
-
-

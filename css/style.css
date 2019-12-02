@@ -19,10 +19,7 @@
 
 
 
-
-
-
-/*--NAVBAR--*/
+/*--Navbar--*/
 
 
 
@@ -155,8 +152,7 @@ padding-bottom: 20px;
     padding: 1.25rem;
     font-family: "montserrat", serif;
    
-    
-    
+
 }
 
 .line-break {
@@ -189,8 +185,6 @@ margin-right: 20px;
 
 
 
-
-
     /*--Graph Style--*/
 
 .graph-title {
@@ -203,14 +197,14 @@ margin-right: 20px;
 
 #leoChart {
 
-    min-height: 200px;
+    min-height: 250px;
     width: 100%;
 }
 
 
 #myChart {
 
-    min-height: 200px;
+    min-height: 250px;
     width: 100%;
 
 
@@ -224,11 +218,6 @@ margin-right: 20px;
 }
 
 
-@media screen and (max-width: 768px) {
-    .btn { font-size: 10px;
-             
-    }
-  }
 
 
     /*--Map Style--*/
@@ -388,12 +377,6 @@ margin-right: 20px;
     }
 
 
-
-
-
-
-
-
     .social {
         padding-bottom: 50px;}
 
@@ -548,6 +531,8 @@ button[type="submit"] {
           text-align: left;
       }
 
+      
+  /*--Media Queries--*/
 
 
       @media screen and (max-width: 768px) {
@@ -560,3 +545,8 @@ button[type="submit"] {
         }
       }
    
+      @media screen and (max-width: 768px) {
+        .btn { font-size: 10px;
+                 
+        }
+      }
