@@ -300,6 +300,12 @@ margin-right: 20px;
         
       }
 
+      ul#menu-graph li {
+        display:inline;
+        
+        
+      }
+
    a.fa-twitter, a.fa-facebook, a.fa-linkedin {
         background-color: #F1F3F5;
         border-radius: 50%;

@@ -1,21 +1,19 @@
-
-
 function updateNews(dataName) {
 
     //Set the JSON file to load Depending on what we pass from button click, i.e. data1,data2
-    let url = ""
-    let label = ""
+    let url = "";
+    let label = "";
     if (dataName == 'data1') {
-        url = "/data/boris-johnson-tone.json"
-        label = "Boris Johnson Tone Sept to Nov (Days)"
+        url = "/data/boris-johnson-tone.json";
+        label = "Boris Johnson Tone Sept to Nov (Days)";
     }
     else if (dataName == 'data2') {
-        url = "/data/jeremy-corybn-tone.json"
-        label = "Jeremy Corbyn Tone Sept to Nov (Days)"
+        url = "/data/jeremy-corybn-tone.json";
+        label = "Jeremy Corbyn Tone Sept to Nov (Days)";
     }
     else if (dataName == 'data3') {
-        url = "/data/leo-varadkar-tone.json"
-        label = "Leo Varadkar Tone Sept to Nov (Days)"
+        url = "/data/leo-varadkar-tone.json";
+        label = "Leo Varadkar Tone Sept to Nov (Days)";
     }
 
     $.ajax({
@@ -29,19 +27,19 @@ function updateNews(dataName) {
         var ctx = document.getElementById('leoChart');
         // bind data to myJSON variable // 
 
-        var myJSON = data.timeline[0].data
+        var myJSON = data.timeline[0].data;
 
-        var valuesArray = []
-        var datesArray = []
+        var valuesArray = [];
+        var datesArray = [];
         $.each(myJSON, function (count, item) {
 
-            var itemvalue = item.value
-            valuesArray.push(itemvalue)
-            datesArray.push(count)
-        })
+            var itemvalue = item.value;
+            valuesArray.push(itemvalue);
+            datesArray.push(count);
+        });
 
-        console.log(valuesArray)
-        console.log(datesArray)
+        console.log(valuesArray);
+        console.log(datesArray);
 
         var chart = new Chart(ctx, {
             // The type of chart we want to create
@@ -105,10 +103,10 @@ function updateNews(dataName) {
 
             }
 
-        })
+        });
 
 
-    })
+    });
 
 
 
@@ -121,7 +119,7 @@ function updateNews(dataName) {
 
 
 
-updateNews('data1') // Call the function straight away so that it populates with the first dataset
+updateNews('data1'); // call the function straight away so that it populates with the first dataset
 
 
 
@@ -147,20 +145,19 @@ $(document).ready(function () {
         let ctx = document.getElementById('myChart');
         // bind data to myJSON variable // 
 
-        let myJSON = data.timeline[0].data
-
-        let valuesArray = [] // creating a array for the number values
-        let datesArray = [] // creating an array for the dates
+        let myJSON = data.timeline[0].data;
+        let valuesArray = [] ;
+        let datesArray = [] ;
         $.each(myJSON, function (count, item) {
 
-            let itemvalue = item.value
-            valuesArray.push(itemvalue)
+            let itemvalue = item.value;
+            valuesArray.push(itemvalue);
 
-            let date = item.date
-            datesArray.push(date) //push the dates into the date array
-        })
+            let date = item.date;
+            datesArray.push(date); 
+        });
 
-        console.log(valuesArray)
+        console.log(valuesArray);
 
 
 
@@ -231,18 +228,18 @@ $(document).ready(function () {
 
             }
 
-        })
+        });
 
 
-    })
-
-
-
+    });
 
 
 
 
-})
+
+
+
+});
 
 
 
@@ -273,7 +270,7 @@ function initMap() {
 
 
 window.eqfeed_callback = function (results) {
-    console.log(results)
+    console.log(results);
     for (var i = 0; i < results.features.length; i++) {
         let coords = results.features[i].geometry.coordinates;
 
@@ -283,12 +280,12 @@ window.eqfeed_callback = function (results) {
 
 
 
-        let label = results.features[i].properties.count.toString() + " Locations Mention  " + results.features[i].properties.name
+        let label = results.features[i].properties.count.toString() + " Locations Mention  " + results.features[i].properties.name;
 
         if (results.features[i].properties.count > 1) {
 
 
-            label = results.features[i].properties.count.toString() + " Location Mentions  " + results.features[i].properties.name
+            label = results.features[i].properties.count.toString() + " Location Mentions  " + results.features[i].properties.name;
         }
 
 
@@ -329,4 +326,4 @@ window.eqfeed_callback = function (results) {
     }
 
 
-}
+};

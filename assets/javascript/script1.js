@@ -14,22 +14,21 @@ $(document).ready(function () {
         let ctx = document.getElementById('myChart');
         // bind data to myJSON variable // 
 
-        let myJSON = data.timeline[0].data
+        let myJSON = data.timeline[0].data;
 
-        let valuesArray = [] // creating a array for the number values
-        let datesArray = [] // creating an array for the dates******************
+        let valuesArray = [] ;
+        let datesArray = [] ;
 
         $.each(myJSON, function (count, item) {
 
-            let itemvalue = item.value
-            valuesArray.push(itemvalue)
+            let itemvalue = item.value;
+            valuesArray.push(itemvalue);
 
-            let date = item.date
-            datesArray.push(date) //push the dates into the date array***************
-        })
+            let date = item.date;
+            datesArray.push(date) ;
+        });
 
-        console.log(valuesArray)
-
+        console.log(valuesArray);
     
 
 
@@ -99,17 +98,19 @@ $(document).ready(function () {
 
             }
 
-        })
+        });
 
 
-    })
-
-
-
+    });
 
 
 
 
-})
+
+
+
+});
+
+
 
 

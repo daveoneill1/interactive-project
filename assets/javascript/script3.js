@@ -22,7 +22,7 @@ function initMap() {
 
 
 window.eqfeed_callback = function (results) {
-    console.log(results)
+    console.log(results);
     for (var i = 0; i < results.features.length; i++) {
         let coords = results.features[i].geometry.coordinates;
 
@@ -32,12 +32,12 @@ window.eqfeed_callback = function (results) {
         
           
 
-           let label = results.features[i].properties.count.toString() + " Locations Mention  " + results.features[i].properties.name
+           let label = results.features[i].properties.count.toString() + " Locations Mention  " + results.features[i].properties.name;
 
         if (results.features[i].properties.count > 1) {
 
         
-            label = results.features[i].properties.count.toString() + " Location Mentions  " + results.features[i].properties.name
+            label = results.features[i].properties.count.toString() + " Location Mentions  " + results.features[i].properties.name;
         }
         
 
@@ -78,4 +78,4 @@ window.eqfeed_callback = function (results) {
     }
 
 
-}
+};
