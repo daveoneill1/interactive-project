@@ -197,16 +197,17 @@ margin-right: 20px;
 
 #leoChart {
 
-    min-height: 250px;
+    height: 285px;
     width: 100%;
+     
 }
 
 
 #myChart {
 
-    min-height: 250px;
+    height: 285px;
     width: 100%;
-
+    
 
 }
 
@@ -550,3 +551,5 @@ button[type="submit"] {
                  
         }
       }
+
+      
