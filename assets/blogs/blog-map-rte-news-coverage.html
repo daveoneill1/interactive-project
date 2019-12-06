@@ -12,9 +12,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,700,800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Merriweather:300,400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
-
-
+    <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
+    <base href="/">
 
 </head>
 
@@ -38,9 +37,8 @@
 
                 <!--NAVIGATION LINKS-->
                 <ul class="navbar-nav ml-auto">
-                    <!--<li class="active nav-item"><a href="index.html" class="nav-link">Blog</a>
-                    </li>-->
-                    <li class="nav-item"><a href="/contact.html" class="nav-link">Contact</a>
+
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a>
                     </li>
 
 
@@ -51,116 +49,111 @@
         </nav>
 
 
+    </div>
 
+    <!--Map Container-->
+
+    <div class="container-fluid header-holder">
+
+
+
+        <hr> 
+
+        <div id="map"></div>
+
+        <div class=gm-style-iw-d></div>
 
 
     </div>
 
-    <div class="container-fluid">
-
-
-        <canvas id="myChart" width="922" height="285"></canvas>
-
-    </div>
 
     <!--Social Icons-->
 
-    <section id="post-content">
-
-        <div class="container post-position">
-
-            <div class="row">
-
-                <div class=" blog-col col-md-10 offset-1">
 
 
+    <div class="container post-position">
 
-                    <div class="social text-center">
-                        <ul id="menu">
-                            <li><a class="fa fa-twitter" title="" target="_blank" href="https://twitter.com/"></a></li>
-                            <li><a class="fa fa-facebook" title="" target="_blank" href="https://www.facebook.com/"></a>
-                            </li>
-                            <li><a class="fa fa-linkedin" title="" target="_blank" href="https://www.linkedin.com/"></a>
-                            </li>
-                        </ul>
+        <div class="row">
 
+            <div class=" blog-col col-md-10 offset-1">
 
-                    </div>
-                    <div class="article-title">
-
-                        <h2>Decline in Media Coverage of Humanitaian Disaster in Yemen</h2>
-
-                    </div>
-
-                    <div class="blog-meta">
-                        <div class="date">
-                            November 28th 2019
-                        </div>
-                    </div>
+                <div class="social text-center">
+                    <ul id="menu">
+                        <li><a class="fa fa-twitter" title="" target="_blank" href="https://twitter.com/"></a></li>
+                        <li><a class="fa fa-facebook" title="" target="_blank" href="https://www.facebook.com/"></a>
+                        </li>
+                        <li><a class="fa fa-linkedin" title="" target="_blank" href="https://www.linkedin.com/"></a>
+                        </li>
+                    </ul>
 
 
-                    <p>Click on the locations above to highlight the number of times that location has been mentioned.
-                        This
-                        dataset is extracted using the GDELT GEO 2.0 API. The results are stored locally in geojson
-                        format and applied
-                        to the Google Map. A few lines of SQL using Google Big Query will deliver results 'live' /
-                        updated every 15 minutes or for a
-                        specified period of time.
-                    </p>
+                </div>
+                <div class="article-title">
 
-                    <h2 class="blogpost-title">Domain Reference</h2>
+                    <h2>RTE Online News Coverage By Location</h2>
 
-                    <p>This query can be applied to any online news domain. In fact GDELT can be queried using keyworks,
-                        themes and much more.
-                        Over the next week will be create coverage maps for a number of online news domains for the same
-                        time frame to generate further
-                        insights into global news coverage.
-                    </p>
-
-
-                    <p>GDELT outlined more about the GEO 2.0 API in an article in 2017 "Perhaps most importantly, the
-                        new API now allows you to create maps of any arbitrary keyword or phrase, rather than being
-                        limited to just the GKG topical themes of the previous GeoJSON API. Now you can enter any
-                        English keyword and instantly receive back a map of every location mentioned within a sentence
-                        or two of your keyword across everything GDELT has monitored in all 65 live machine translated
-                        languages over the last 7 days, updated every 15 minutes.
-                        Now no matter what word or phrase you're interested in, you can map it and even combine multiple
-                        terms into basic boolean OR statements".</p>
-
-                    <h2 class="blogpost-title">Massive Complexity</h2>
-
-                    <p>Given the immense complexity of monitoring worldwide news media in nearly every country of the
-                        world across more than 100 languages, visually identifying and extracting the actual article
-                        text from the rest of the page, machine translating the incredible complexity and nuance of more
-                        than 65 languages in realtime and geocoding and disambiguating more than 9 million places on
-                        earth down to the level of a remote isolated hilltop, together with deep learning analysis of
-                        imagery reflecting the entirety of global human experience, you will almost always see at least
-                        some level of error in the results this API provides. This can range from one city being
-                        confused for another of the same name and context to a city name being mistranslated to an
-                        unrelated temporary breaking news inset at a different location being incorrectly inserted into
-                        the middle of an article. With anything this massive, you will always find some level of error
-                        when you dive deeply enough into the results,
-                        but overall the maps should accurately reflect the broad contours of the geography of your
-                        search.</p>
                 </div>
 
 
+                <div class="blog-meta">
+                    <div class="date">
+                        November 28th 2019
+                    </div>
+                </div>
 
+
+                <p>Click on the locations above to highlight the number of times that location has been mentioned.
+                    This
+                    dataset is extracted using the GDELT GEO 2.0 API. The results are stored locally in geojson
+                    format and applied
+                    to the Google Map. A few lines of SQL using Google Big Query will deliver results 'live' /
+                    updated every 15 minutes or for a
+                    specified period of time.
+                </p>
+
+                <h2 class="blogpost-title">Domain Reference</h2>
+
+                <p>This query can be applied to any online news domain. In fact GDELT can be queried using keyworks,
+                    themes and much more.
+                    Over the next week will be create coverage maps for a number of online news domains for the same
+                    time frame to generate further
+                    insights into global news coverage.
+                </p>
+
+
+                <p>GDELT outlined more about the GEO 2.0 API in an article in 2017 "Perhaps most importantly, the
+                    new API now allows you to create maps of any arbitrary keyword or phrase, rather than being
+                    limited to just the GKG topical themes of the previous GeoJSON API. Now you can enter any
+                    English keyword and instantly receive back a map of every location mentioned within a sentence
+                    or two of your keyword across everything GDELT has monitored in all 65 live machine translated
+                    languages over the last 7 days, updated every 15 minutes.
+                    Now no matter what word or phrase you're interested in, you can map it and even combine multiple
+                    terms into basic boolean OR statements".</p>
+
+                <h2 class="blogpost-title">Massive Complexity</h2>
+
+                <p>Given the immense complexity of monitoring worldwide news media in nearly every country of the
+                    world across more than 100 languages, visually identifying and extracting the actual article
+                    text from the rest of the page, machine translating the incredible complexity and nuance of more
+                    than 65 languages in realtime and geocoding and disambiguating more than 9 million places on
+                    earth down to the level of a remote isolated hilltop, together with deep learning analysis of
+                    imagery reflecting the entirety of global human experience, you will almost always see at least
+                    some level of error in the results this API provides. This can range from one city being
+                    confused for another of the same name and context to a city name being mistranslated to an
+                    unrelated temporary breaking news inset at a different location being incorrectly inserted into
+                    the middle of an article. With anything this massive, you will always find some level of error
+                    when you dive deeply enough into the results,
+                    but overall the maps should accurately reflect the broad contours of the geography of your
+                    search.</p>
             </div>
-
-
-
         </div>
+    </div>
 
-    </section>
 
     <!--Popular Posts-->
 
     <section id="popular-posts" class="p-posts">
-
-
         <div class="post-container container">
-
             <header>
 
                 <h3 class="p-posts-title">
@@ -176,7 +169,7 @@
                 <div class="card-deck">
 
                     <div class="card">
-                        <img class="card-img-top" src="/assets/images/yemen-2yr-graph.png " alt="Card image cap">
+                        <img class="card-img-top" src="assets/images/yemen-2yr-graph.png" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">The Media is Talking Less About Yemen</h5>
                             <a href="blog-media-talking-less-about-yemen.html" class="stretched-link"></a>
@@ -191,7 +184,7 @@
                     </div>
 
                     <div class="card">
-                        <img class="card-img-top" src="/assets/images/yemen-2yr-graph.png" alt="Card image cap">
+                        <img class="card-img-top" src="assets/images/yemen-2yr-graph.png" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">The Media is Talking Less About Yemen</h5>
                             <a href="blog-media-talking-less-about-yemen.html" class="stretched-link"></a>
@@ -206,7 +199,7 @@
                     </div>
 
                     <div class="card">
-                        <img class="card-img-top" src="/assets/images/yemen-2yr-graph.png" alt="Card image cap">
+                        <img class="card-img-top" src="assets/images/yemen-2yr-graph.png" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">The Media is Talking Less About Yemen</h5>
                             <a href="blog-media-talking-less-about-yemen.html" class="stretched-link"></a>
@@ -221,7 +214,7 @@
                     </div>
 
                     <div class="card">
-                        <img class="card-img-top" src="/assets/images/yemen-2yr-graph.png" alt="Card image cap">
+                        <img class="card-img-top" src="assets/images/yemen-2yr-graph.png" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">The Media is Talking Less About Yemen</h5>
                             <a href="blog-media-talking-less-about-yemen.html" class="stretched-link"></a>
@@ -234,16 +227,9 @@
                             <small class="text-muted">Last updated 3 mins ago</small>
                         </div>
                     </div>
-
-
                 </div>
             </div>
-
-
         </div>
-
-
-
     </section>
 
 
@@ -266,12 +252,16 @@
 
 
                 <div class="col-sm-3">
+
+
                     <a href="contact.html">
                         <h5 class="footer-heading text-uppercase">Contact</h5>
                     </a>
+
                 </div>
 
                 <div class="col-sm-3">
+
                     <a href="https://www.gdeltproject.org/" target="_blank">
                         <h5 class="footer-heading text-uppercase">Learn</h5>
                     </a>
@@ -285,13 +275,8 @@
                     </a>
 
                 </div>
-
-
             </div>
-
-
         </div>
-
     </footer>
 
 
@@ -304,9 +289,10 @@
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
 
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
 
+
+    <script src="/assets/javascript/script3.js"></script>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -317,7 +303,13 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
-    <script src="assets/javascript/script1.js"></script>
+    <script
+        src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOsD9LFUegL5XVBr0rNNOCW4cgJbZrbRU&callback=initMap"></script>
+
+
 </body>
 
 
