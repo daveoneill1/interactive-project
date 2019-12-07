@@ -4,12 +4,12 @@ $(document).ready(function () {
     // fire ajax method, call url // 
 
     $.ajax({
-        url: "/assets/data/yemen-news-2-year.json",
+        url: "/interactive-project/assets/data/yemen-news-2-year.json",
 
         // if successful bind the data to the done method
     }).done(function (data) {
 
-
+       
 
         let ctx = document.getElementById('myChart');
         // bind data to myJSON variable // 
