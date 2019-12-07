@@ -4,15 +4,15 @@ function updateNews(dataName) {
     let url = "";
     let label = "";
     if (dataName == 'data1') {
-        url = "/assets/data/boris-johnson-tone.json";
+        url = "assets/data/boris-johnson-tone.json";
         label = "Boris Johnson Tone Sept to Nov (Days)";
     }
     else if (dataName == 'data2') {
-        url = "/assets/data/jeremy-corybn-tone.json";
+        url = "assets/data/jeremy-corybn-tone.json";
         label = "Jeremy Corbyn Tone Sept to Nov (Days)";
     }
     else if (dataName == 'data3') {
-        url = "/assets/data/leo-varadkar-tone.json";
+        url = "assets/data/leo-varadkar-tone.json";
         label = "Leo Varadkar Tone Sept to Nov (Days)";
     }
 
@@ -135,7 +135,7 @@ $(document).ready(function () {
     // fire ajax method, call url // 
 
     $.ajax({
-        url: "/assets/data/yemen-news-2-year.json",
+        url: "assets/data/yemen-news-2-year.json",
 
         // if successful bind the data to the done method
     }).done(function (data) {
@@ -262,7 +262,7 @@ function initMap() {
 
     var script = document.createElement('script');
 
-    script.src = "/assets/data/rte-news-coverage-world.js";
+    script.src = "assets/data/rte-news-coverage-world.js";
     document.getElementsByTagName('head')[0].appendChild(script);
 }
 
@@ -303,7 +303,7 @@ window.eqfeed_callback = function (results) {
             position: latLng,
             map: map,
             title: label,
-            icon: "http://www.codeshare.co.uk/images/blue-pin.png",
+            icon:"http://www.codeshare.co.uk/images/blue-pin.png",
             animation: google.maps.Animation.DROP
         });
 
