@@ -22,7 +22,7 @@
 
 #### - Particle Background and Title - Particles.js from vincentgarreau.com
 #### - Interactive Graph - designed to give users an example of how tone comparisons from online media can be used. Three data sets were taken from a GDELT query based on tone, saved as json files and plotted on the graph using Chart.js
-#### -  Interactive Map - Goople Map that highlights how Geo location 2.0 from GDELT can be used. In this instance I am plotting the georgraphic locations of news coverage from a media outlet. 
+#### -  Interactive Map - Google Map that highlights how Geo location 2.0 from GDELT can be used. In this instance I am plotting the geographic locations of news coverage from a media outlet. 
 #### - Line Graph - The line graph using data from a GDELT query that plots news intensity for a keyword. Any keyword can be used. In this instance I am highlighting how topics can be monitored to see if they are increasing / decreasing in the news. 
 #### - Blog Summary Cards - The blogs card are linking to a blog page that highlights how the articles about online news analysis will be presented in the future. 
 #### - Footer - A simple footer is used to link to additional information about GDELT and Google Big Query.
@@ -41,7 +41,7 @@
 
 #### - Improved and animated data visualizations 
 
-#### - At present I am storing data sets locally as Big Query is expensive. In the next phase of development I plan to host two of the GDELT databases and create an api to call data from them. A keword search function will be added for users. 
+#### - At present I am storing data sets locally as Big Query is expensive. In the next phase of development I plan to host two of the GDELT databases and create an api to call data from them. A keyword search function will be added for users. 
 
 
 ## Technology Used 
@@ -50,7 +50,7 @@
 * CSS
 * JAVASCRIPT
 * JQUERY
-* CHARTS.JS
+* CHARTS.JS ( I have some low level experience with charts.js and this is why I used it in this project)
 * GDELT GKG / GEO 2.0 DATABASES
 * GOOGLE BIG QUERY
 
@@ -71,7 +71,7 @@
 
 #### CSS - https://jigsaw.w3.org/css-validator/ - This validator compares your style sheets to the CSS specifications, helping you find errors, typos, or incorrect uses of CSS, it will also tell you when your CSS poses some risks in terms of usability.
 
-#### JAVASCRIPt -   https://jshint.com/ -  This is a tool that helps to detect errors and potential  problems in your JavaScript code.
+#### JAVASCRIPT -   https://jshint.com/ -  This is a tool that helps to detect errors and potential  problems in your JavaScript code.
 
 
 
@@ -83,17 +83,17 @@
 
 ### **User Story Testing**
 
-### The user that is coming to the site should be able to understand the purpose of the site. They may or may not have an interest in the area of news analysis. I  woudl like to give the user flavour of the type of news analysis that we will develop in the future. The user can get in touch with me through the contact page to find our more and there are links to the GDELT and Big Query websites on the footer. 
+### The user that is coming to the site should be able to understand the purpose of the site. They may or may not have an interest in the area of news analysis. I  would like to give the user flavour of the type of news analysis that we will develop in the future. The user can get in touch with me through the contact page to find our more and there are links to the GDELT and Big Query websites on the footer. 
 
 ### **Test and Result** 
 
-#### I tested the pages myself on desktop and mobile. In addition I asked three friends to visit the link as try and complete the following taks which they were able to achieve. 
+#### I tested the pages myself on desktop and mobile. In addition I asked friends to visit the link as try and complete the following tasks which they were able to achieve. 
 
 ### 1. Find the tone graph for Boris Johnson
 
 #### - User lands on the Home page and can read the headline and description about Leaders Tone in online news media. The buttons for the three leaders are visible and the graph changes when the button is clicked. 
 
-### 2. Discover the how many times France is mentioned in RTE's new coverage for this data set
+### 2. Discover how many times France is mentioned in RTE's new coverage for this data set.
 
 #### - User can navigate to the Map section on the Home Page. The markers are visible for the relevant countries. The user can zoom in to see the country view for France. The label is visible when the marker is clicked to indicate how many times this location was mentioned. 
 
@@ -107,15 +107,15 @@
 
 ### **Bugs and Challenges during Development** 
 
-####  1. I encountered the Mime type error from the CSS.Stylesheet file on a number of occasions during this project which cuased a number of issues. I checked Google and a number of Stackoverflows before asking my mentor. It appears the error was due to connectivity issues. 
+####  1. I encountered the Mime type error from the CSS.Stylesheet file on a number of occasions during this project which caused a number of issues. I checked Google and a number of Stackoverflow posts before asking my mentor. It appears the error was due to connectivity issues. 
 
 #### 2. Init map is not a function. This error was due to the order of the script tags and was resolved.  
 
 #### 3. 404 errors on blog pages where stylesheet was not being picked up. This caused a lot of downtime. There were issues with relative and absolute file paths and the type of file path that was working locally on Chrome versus the file path that was working on GIT pages. 
 
-#### 4. On my last project I used relative paths in VS code and this worked perfect both locally and on GIT pages. This was not the case during this project. I beleive I may have made an error setting up the project which resulted in the discrepancy. The blog page was not picking up the 'Interactive-project' part of the file url and was throwing a 404.  By decalring that part of the url in the reference on the blog page I was able to get the stylesheet working. 
+#### 4. On my last project I used relative paths in VS code and this worked perfect both locally and on GIT pages. This was not the case during this project. I believe I may have made an error setting up the project which resulted in the discrepancy. The blog page was not picking up the 'Interactive-project' part of the file url and was throwing a 404.  By declaring that part of the url in the reference on the blog page I was able to get the stylesheet working. 
 
-#### 5. I encountered a bug on the first interactive graph. I noticed when the graphs are changed using the buttons it appears sometimes that the data is not clearing from the previous time it displayed.
+#### 5. I encountered a bug on the first interactive graph. I noticed when the graphs are changed using the buttons it appears sometimes that the data is not clearing from the previous time it displayed. I do not feel I have fully resolved this issue. 
 
 #### 6. There was an error on one of the Maps related to Global scope which was resolved with some help from Stackoverflow. 
 
@@ -172,7 +172,7 @@ $ git clone https://github.com/shakapoxa/user-centric-project
 
 ### Acknowledgements
 
-#### I learned so much during this project and it has increased my confidence working with Javascript and Jquery. I would like to put a big shoud out to Tony my mentor for the constant encouragment and taking additional time outside of the allocated calls to help with creating a better homepage and resolving some of the errors I encountered. I would also like to Thank the support team at Code Institute for their assistance. 
+#### I learned so much during this project and it has increased my confidence working with Javascript and Jquery. I would like to put a big shout out to Tony my mentor for the constant encouragment and taking additional time outside of the allocated calls to help with creating a better homepage and resolving some of the errors I encountered. I would also like to Thank the support team at Code Institute for their assistance. 
 
 
 
