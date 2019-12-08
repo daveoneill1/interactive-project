@@ -18,11 +18,6 @@
 
 /*--Navbar--*/
 
-
-
-
-
-
 .navbar {
     margin-bottom: 0;
     border: 0;
@@ -206,6 +201,7 @@ margin-right: 20px;
 #myChart {
 
     height: 285px;
+    width: 980px;
     width: 100%;
     
 
