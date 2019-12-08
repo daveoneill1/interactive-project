@@ -14,7 +14,7 @@ function initMap() {
 
     var script = document.createElement('script');
 
-    script.src ="assets/data/rte-news-coverage-world.js";
+    script.src ="/interactive-project/assets/data/rte-news-coverage-world.js";
     document.getElementsByTagName('head')[0].appendChild(script);
 }
 
